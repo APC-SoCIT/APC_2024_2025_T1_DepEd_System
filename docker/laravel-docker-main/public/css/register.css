@@ -79,7 +79,9 @@ body {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
     width: 75%;
 }
-
+#fname, #lname, #sid, #district, #password, #cpassword, #sname, #email{
+    width: 100%;
+}
 .form-control:hover {
     border-color: #1035AC;
     box-shadow: 0 0 8px rgba(16, 53, 172, 0.2);
@@ -232,6 +234,3 @@ input:hover + .radio-tile {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Inherit text color from parent element */
   }
-#fname, #lname, #sid, #district, #password, #cpassword, #sname, #email{
-    width: 100%;
-}
