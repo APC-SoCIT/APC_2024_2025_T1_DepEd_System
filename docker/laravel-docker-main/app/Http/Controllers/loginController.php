@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
-use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Session;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
 {
@@ -28,34 +31,38 @@ class loginController extends Controller
         return view('register?error');
     }
     function registerTeacher(Request $request){
-        $request->validate([
-            'fname'=>'required',
-            'lname'=>'required',
-            'sname'=>'required',
-            'sid'=>'required',
-            'district'=>'required',
-            'email'=>'required',
-            'password'=>'required|confirmed',
-            'cpassword'=>'required',
-        ]);
-    
-        if ($request->password !== $request->cpassword) {
-            return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
-        }
-    
-        $data = [
-            'fname' => $request->fname,
-            'lname' => $request->lname,
-            'sname' => $request->sname,
-            'sid' => $request->sid,
-            'district' => $request->district,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ];
-    
-        // Must Edit this and Models/User.php
-        $user = User::create($data);
-    
-        return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['registered' => true])));
+            try{
+                $request->validate([
+                    'fname' => 'required',
+                    'lname' => 'required',
+                    'sname' => 'required',
+                    'sid' => 'required',
+                    'district' => 'required',
+                    'email' => 'required|email|unique:users,email',
+                    'password' => 'required',
+                    'password_confirmation' => 'required',
+                ]);
+            } catch (\Exception $e) {
+                return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
+            }
+            if ($request->password !== $request->password_confirmation) {
+                return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
+            }            
+            $data = [
+                'fname' => $request->fname,
+                'lname' => $request->lname,
+                'sname' => $request->sname,
+                'sid' => $request->sid,
+                'district' => $request->district,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ];
+        
+            try {
+                $user = User::create($data);
+                return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['registered' => true])));
+            } catch (\Exception $e) {
+                return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
+            }
     }
 }

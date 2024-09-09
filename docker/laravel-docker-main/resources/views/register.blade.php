@@ -14,7 +14,7 @@
         <img id="logo" src="{{ asset('DepEd_logo.ico') }}">
         <p id='heading'><b>DepED Teacher Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
-        <form id="login" action="" method="POST">
+        <form id="login" action="{{route('registerTeacher')}}" method="POST">
         @csrf
         <div id="container">
             <div class="row">
@@ -48,11 +48,11 @@
             <div class="row">
                 <div class="mb-3 col-sm">
                     <label class="form-label">Password</label>
-                    <input type="text" class="form-control" id="password" name="password" required>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div class="mb-3 col-sm">
                     <label class="form-label">Confirm Password</label>
-                    <input type="text" class="form-control" id="cpassword" name="cpassword" required>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
             </div>
         </div>
