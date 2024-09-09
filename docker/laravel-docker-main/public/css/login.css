@@ -64,6 +64,7 @@ body {
     color: #1035AC;
     font-size: 0.9rem;
     margin-bottom: 5px;
+    text-decoration: none!important;
 }
 
 .form-control {
@@ -180,6 +181,7 @@ svg {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 5px;
+    text-decoration: none!important;
 }
 
 input:checked + .radio-tile {
@@ -221,4 +223,12 @@ input:hover + .radio-tile {
 .input-container svg {
     /* Existing styles... */
     margin: auto;  /* Add margin: auto to center the SVG horizontally */
+  }
+.container .input-container .radio-tile a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent element */
+}
+.no-effects {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent element */
   }

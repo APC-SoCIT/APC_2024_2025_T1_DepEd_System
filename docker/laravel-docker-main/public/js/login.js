@@ -5,3 +5,9 @@ function invalid_credentials(){
         text: "Please Input the right credentials!",
       });
 };
+function registered(){
+    Swal.fire({
+        icon: "success",
+        title: "Registered Successfully",
+      });
+}

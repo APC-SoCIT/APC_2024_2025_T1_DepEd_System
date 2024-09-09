@@ -12,4 +12,29 @@ class loginController extends Controller
     function login(){
         return view('login');
     }
+    function loginTeacher(){
+        return view('login-teacher');
+    }
+    function loginStudent(){
+        return view('login-student');
+    }
+    function loginError(){
+        return view('login?error');
+    }
+    function register(){
+        return view('register');
+    }
+    function registerPost(Request $request){
+        $request->validate([
+            'username'=>'required',
+            'password'=>'required'
+        ]);
+
+        $data['username'] = $request->username;
+        $data['password'] = Hash::make($request->password);
+
+        $user = User::create($data);
+
+        return redirect()->route('login');
+    }
 }
