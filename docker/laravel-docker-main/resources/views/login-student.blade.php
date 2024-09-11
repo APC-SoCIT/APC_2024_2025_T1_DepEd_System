@@ -1,6 +1,6 @@
 @extends('layouts.master-layout')
 @push('css')
-    <link href="{{asset('css/login.css')}}" rel="stylesheet">
+<link href="https://fictional-enigma-v5xpq6x4pxj3pj4v-80.app.github.dev/css/login.css" rel="stylesheet">
 @endpush
 
 @section('content')
