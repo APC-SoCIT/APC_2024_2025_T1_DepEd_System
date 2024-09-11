@@ -1,6 +1,7 @@
 @extends('layouts.master-layout')
 @push('css')
-<link href="https://fictional-enigma-v5xpq6x4pxj3pj4v-80.app.github.dev/css/login.css" rel="stylesheet">@endpush
+    <link href="{{asset('css/login.css')}}" rel="stylesheet">
+@endpush
 
 @section('content')
 <body>
@@ -10,7 +11,7 @@
 
 <div id="centered-container">
     <center>
-        <img id="logo" src="https://fictional-enigma-v5xpq6x4pxj3pj4v-80.app.github.dev/DepEd_logo.ico">
+        <img id="logo" src="{{ asset('DepEd_logo.ico') }}">
         <p id='heading'><b>DepED Student Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
         <form id="login" action="" method="POST">
