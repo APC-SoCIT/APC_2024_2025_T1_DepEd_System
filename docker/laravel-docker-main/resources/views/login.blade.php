@@ -1,6 +1,6 @@
 @extends('layouts.master-layout')
 @push('css')
-    <link href="{{asset('css/login.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/login.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -11,7 +11,7 @@
 
 <div id="centered-container">
     <center>
-        <img id="logo" src="{{ asset('DepEd_logo.ico') }}">
+        <img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}">
         <p id='heading'><b>DepED Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
         <div class='container'>
@@ -38,6 +38,6 @@
 </body>
 @endsection
 @push('script')
-    <script src="{{ asset('js/login.js')}}"></script>
+    <script src="{{ secure_asset('js/login.js')}}"></script>
 @endpush
 
