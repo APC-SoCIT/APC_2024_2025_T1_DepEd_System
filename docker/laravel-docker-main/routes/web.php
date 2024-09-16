@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\{loginController,dashboardController};
+use Illuminate\Support\Facades\URL;
 
+$url = config('app.url');
+URL::forceRootUrl($url);
 Route::get('/', [loginController::class, 'login'])->name('login');
 
 Route::get('/register', [loginController::class, 'register'])->name('register');
