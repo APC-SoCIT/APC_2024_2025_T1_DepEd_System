@@ -13,7 +13,7 @@ Route::get('/register', [loginController::class, 'register'])->name('register');
 Route::post('/register', [loginController::class, 'registerTeacher'])->name('registerTeacher');   
 
 Route::get('/login-teacher', [loginController::class, 'loginTeacher'])->name('login-teacher');
-Route::post('/login-teacher', [loginController::class, 'loginTeacherPost'])->name('loginTeacherPost');
+Route::post('/login-teacher/post', [loginController::class, 'loginTeacherPost'])->name('loginTeacherPost');
 
 Route::get('/login-student', [loginController::class, 'loginStudent'])->name('login-student');
 

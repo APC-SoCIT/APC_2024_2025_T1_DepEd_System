@@ -18,6 +18,9 @@ class loginController extends Controller
     function loginTeacher(){
         return view('login-teacher');
     }
+    function loginTeacherPost(){
+        return view('dashboard-teacher');
+    }
     function loginStudent(){
         return view('login-student');
     }
@@ -60,7 +63,7 @@ class loginController extends Controller
         
             try {
                 $user = User::create($data);
-                return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['registered' => true])));
+                return redirect()->route('dashboard-teacher', http_build_query(array_merge(\Request::query(), ['registered' => true])));
             } catch (\Exception $e) {
                 return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
             }
