@@ -11,7 +11,7 @@
 
 <div id="centered-container">
     <center>
-        <img id="logo" src="{{ asset('DepEd_logo.ico') }}">
+    <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
         <p id='heading'><b>DepED Teacher Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
         <form id="login" action="{{route('loginTeacher.post')}}" method="POST">
