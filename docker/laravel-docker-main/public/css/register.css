@@ -79,7 +79,7 @@ body {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
     width: 75%;
 }
-#fname, #lname, #sid, #district, #password, #password_confirmation, #sname, #email{
+#fname, #mname, #lname, #sid, #tid, #password, #password_confirmation, #email, #sex, #bday{
     width: 100%;
 }
 .form-control:hover {
@@ -234,3 +234,14 @@ input:hover + .radio-tile {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Inherit text color from parent element */
   }
+  .center-placeholder {
+    text-align: center; /* Centers text within the select */
+}
+
+.center-placeholder option {
+    text-align: left; /* Ensures all options remain left-aligned */
+}
+
+.center-placeholder option[selected] {
+    text-align: center; /* Centers the default selected option */
+}
