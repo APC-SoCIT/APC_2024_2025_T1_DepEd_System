@@ -11,9 +11,9 @@ Route::get('/register', [loginController::class, 'register'])->name('register')-
 Route::post('/register', [loginController::class, 'registerTeacherPost'])->name('registerTeacher.post');
 #Route::post('/register', [loginController::class, 'registerStudentPost'])->name('registerStudent.post');    
 Route::get('/login-teacher', [loginController::class, 'loginTeacher'])->name('login-teacher')->middleware('user');
-Route::post('/login', [loginController::class, 'loginTeacherPost'])->name('loginTeacher.post');
+Route::post('/login-teacher', [loginController::class, 'loginTeacherPost'])->name('loginTeacher.post');
 Route::get('/login-student', [loginController::class, 'loginStudent'])->name('login-student')->middleware('user');
-Route::post('/login', [loginController::class, 'loginStudentPost'])->name('loginStudent.post');
+Route::post('/login-student', [loginController::class, 'loginStudentPost'])->name('loginStudent.post');
 
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
