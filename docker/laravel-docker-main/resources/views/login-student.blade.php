@@ -14,7 +14,7 @@
         <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
         <p id='heading'><b>DepED Student Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
-        <form id="login" action="" method="POST">
+        <form id="login" action="{{route('loginStudent.post')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label class="form-label">Learner's Reference Number (LRN)</label>

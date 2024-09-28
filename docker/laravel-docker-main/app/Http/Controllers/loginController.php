@@ -82,6 +82,18 @@ class loginController extends Controller
             return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['error' => true])));
         }
     }
+    function loginStudentPost(Request $request){
+        $request->validate([
+            'lrn'=>'required',
+            'password'=>'required'
+        ]);
+        $credentials = $request->only('lrn','password');
+        if(Auth::attempt($credentials)){
+            return redirect()->route('dashboard-student');
+        }else{
+            return redirect()->route('login-student', http_build_query(array_merge(\Request::query(), ['error' => true])));
+        }
+    }
     function logout(){
         Session::flush();
         Auth::logout();

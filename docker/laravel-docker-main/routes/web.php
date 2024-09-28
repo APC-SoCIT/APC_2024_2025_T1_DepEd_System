@@ -13,7 +13,7 @@ Route::post('/register', [loginController::class, 'registerTeacherPost'])->name(
 Route::get('/login-teacher', [loginController::class, 'loginTeacher'])->name('login-teacher')->middleware('user');
 Route::post('/login', [loginController::class, 'loginTeacherPost'])->name('loginTeacher.post');
 Route::get('/login-student', [loginController::class, 'loginStudent'])->name('login-student')->middleware('user');
-#Route::post('/login', [loginController::class, 'loginStudentPost'])->name('loginStudent.post');
+Route::post('/login', [loginController::class, 'loginStudentPost'])->name('loginStudent.post');
 
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
