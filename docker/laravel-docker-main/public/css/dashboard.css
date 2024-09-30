@@ -235,7 +235,7 @@ footer a:hover {
 .navbar-nav .dropdown-menu {
     background-color: #ffffff;
     color: #1035AC!important;
-    border: none;
+    border: 1px solid #1035AC;
 }
 
 a.dropdown-menu:hover{
