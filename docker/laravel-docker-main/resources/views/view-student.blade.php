@@ -24,10 +24,10 @@
                         </a>
                         <ul id="student" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{route('register-student')}}" class="sidebar-link">Register Student</a>
+                                <a href="" class="sidebar-link">Register Student</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('view-student')}}" class="sidebar-link">View Students</a>
+                                <a href="" class="sidebar-link">View Students</a>
                             </li>
                         </ul>
                     </li>
@@ -76,8 +76,8 @@
                 </div>
             </nav>
             <main class="content px-3 py-2">
-                <div class="container-fluid">
-                    Dashboard
+                <div class="container-fluid" id="view-student">
+                    view students
                 </div>
             </main>
             <footer class="footer">
@@ -103,6 +103,17 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/dashboard.js')}}"></script>
 </body>
+<?php
+ if(isset($_GET['error'])){
+     echo '<script>window.onload = function() { register_error(); }</script>';
+ }
+ if(isset($_GET['registered'])){
+     echo '<script>window.onload = function() { registered(); }</script>';
+ }
+?>
 @endsection
+@push('script')
+<script src="{{ asset('js/dashboard.js')}}"></script>
+<script src="{{ asset('js/login.js')}}"></script>
+@endpush
