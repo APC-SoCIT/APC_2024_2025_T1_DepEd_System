@@ -76,7 +76,7 @@
                 </div>
             </nav>
             <main class="content px-3 py-2">
-                <div class="container-fluid">
+                <div class="container-fluid" id="dashboard">
                     Dashboard
                 </div>
             </main>

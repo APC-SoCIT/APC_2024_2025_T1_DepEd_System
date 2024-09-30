@@ -267,7 +267,7 @@ a.dropdown-item:hover{
 .card-subtitle {
     text-align: justify;
 }
-#register-student-container,#view-student{
+#register-student-container,#view-student,#dashboard{
     height: 100%;
     background-color: white;
     border-radius: 6px;
