@@ -77,7 +77,12 @@
             </nav>
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
-                    view students
+                    <div>
+                        <h1 class="pt-3">Student Database</h1>
+                    </div>
+                    <hr>
+                    <div>
+                    </div>
                 </div>
             </main>
             <footer class="footer">
