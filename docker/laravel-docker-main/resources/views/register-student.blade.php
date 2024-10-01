@@ -77,6 +77,10 @@
                 </nav>
                 <main class="content px-3 py-2">
                     <div class="container-fluid" id="register-student-container">
+                        <div>
+                            <center><h1 class="pt-3">Register Student</h1></center>
+                        </div>
+                        <hr>
                         <form id="register-student-form" action="{{route('registerStudent.post')}}" method="POST">
                         @csrf
                         <br>
@@ -117,7 +121,7 @@
                                 </div>
                                 <div class="mb-3 col-sm">
                                     <label class="form-label">E-mail</label>
-                                    <input type="text" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                             </div>
                             

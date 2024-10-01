@@ -108,9 +108,9 @@
                                     <td>{{$student->fname}}</td>
                                     <td>{{$student->mname}}</td>
                                     <td>{{$student->lname}}</td>
-                                    <td><a class="" href=""><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
+                                    <td><a class="" href="{{route('update-student', ['id' => $student->id])}}"><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
                                     <td>
-                                            <form type="submit" action="{{ route('studentDelete', ['student' => $student->id]) }}" method="POST">
+                                            <form type="submit" action="{{route('studentDelete', ['student' => $student->id])}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -150,14 +150,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-@if(isset($_GET['error']))
+@if(isset($_GET['updated']))
 <script>
-    window.onload = function() { register_error(); };
+    window.onload = function() { updated(); };
 </script>
 @endif
-@if(isset($_GET['registered']))
+@if(isset($_GET['update-error']))
 <script>
-    window.onload = function() { registered(); };
+    window.onload = function() { updateError(); };
 </script>
 @endif
 @if(isset($_GET['deleted']))

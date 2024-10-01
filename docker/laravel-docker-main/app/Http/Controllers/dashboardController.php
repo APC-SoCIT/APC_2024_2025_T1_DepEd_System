@@ -24,6 +24,10 @@ class dashboardController extends Controller
         $students = User::where('role', 'student')->get();
         return view('view-student', ['students'=>$students]);
     }
+    function updateStudent($id){
+        $student = User::find($id);
+        return view('update-student', compact('student'));
+    }
     function registerStudent(){
         return view('register-student');
     }
@@ -39,12 +43,6 @@ class dashboardController extends Controller
             'lrn' => 'required',
             'email' => 'required|email|unique:users,email',
         ]);
-
-        // Check if password and password confirmation match (optional, remove if not needed)
-        if ($request->password !== $request->password_confirmation) {
-            return redirect()->route('register-student', ['error' => true]);
-        }
-
         // Retrieve logged-in user's tid and sid
         $loggedInUser = Auth::user();
         // Prepare the data for creating a new student
@@ -73,5 +71,37 @@ class dashboardController extends Controller
     function studentDelete(User $student){
         $student->delete();
         return redirect()->route('view-student', ['deleted' => true]);
+    }
+    function updateStudentPost(Request $request, $id){
+        $request->validate([
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required',
+            'sex' => 'required',
+            'bday' => 'required',
+            'lrn' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+        ]);
+        // Retrieve logged-in user's tid and sid
+        $loggedInUser = Auth::user();
+        // Prepare the data for creating a new student
+        $data = [
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'sex' => $request->sex,
+            'lrn' => $request->lrn,
+            'bday' => $request->bday,
+            'email' => $request->email,
+        ];
+
+        // Try to update
+        try {
+            $user = User::findOrFail($id);
+            $user->update($data);
+            return redirect()->route('view-student', ['updated' => true]); // Redirect to view student page
+        } catch (\Exception $e) {
+            return redirect()->route('view-student', ['update-error' => true]);
+        }
     }
 }
