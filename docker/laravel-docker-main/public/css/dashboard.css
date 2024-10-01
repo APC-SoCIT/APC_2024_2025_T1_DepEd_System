@@ -354,4 +354,104 @@ select.form-control {
         margin-bottom: 1rem;
     }
 }
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(16, 53, 172, 0.1); /* Soft shadow for professional look */
+}
 
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #1035AC;
+    border-bottom: 1px solid rgba(16, 53, 172, 0.25); /* Light blue border */
+    font-size: 1rem;
+}
+
+.table th {
+    background-color: #1035AC;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(16, 53, 172, 0.1); /* Light blue on hover */
+}
+
+.table td {
+    font-size: 0.95rem;
+}
+
+.table button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#view-edit-btn {
+    background-color: #1035AC;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+#view-edit-btn:hover {
+    background-color: #0d2a84;
+}
+
+#delete-btn {
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+#delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .table {
+        box-shadow: none;
+        border: 1px solid rgba(16, 53, 172, 0.2);
+    }
+
+    #view-edit-btn, #delete-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}
+
+
+.btn-sort{
+    background-color: #1035AC;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #0d2a84;
+}
+.student-table {
+    overflow-x: auto;
+    white-space: nowrap; /* Ensure table cells don't wrap */
+}
+
+table {
+    width: 100%; /* Make the table take up the full width of its container */
+}
+
+.btn-sort {
+    margin-left: 5px; /* Add a small margin to separate the button from the header text */
+}
+    

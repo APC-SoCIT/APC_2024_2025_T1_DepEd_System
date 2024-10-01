@@ -21,7 +21,8 @@ class dashboardController extends Controller
         return view('dashboard-student');
     }
     function viewStudent(){
-        return view('view-student');
+        $students = User::where('role', 'student')->get();
+        return view('view-student', ['students'=>$students]);
     }
     function registerStudent(){
         return view('register-student');
