@@ -5,19 +5,12 @@ function invalid_credentials(){
         text: "Please Input the right credentials!",
       });
 };
-function registered(){
+function deleted(){
     Swal.fire({
         icon: "success",
-        title: "Registered Successfully!",
+        title: "Student Deleted",
       });
 }
-function register_error(){
-    Swal.fire({
-        icon: "error",
-        title: "Registration Error",
-        text: "Please try again.",
-      });
-};
 const sidebarToggle = document.querySelector("#sidebar-toggle");
 sidebarToggle.addEventListener("click",function(){
     document.querySelector("#sidebar").classList.toggle("collapsed");

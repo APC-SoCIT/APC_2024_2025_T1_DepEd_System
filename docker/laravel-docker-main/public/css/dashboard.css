@@ -454,4 +454,7 @@ table {
 .btn-sort {
     margin-left: 5px; /* Add a small margin to separate the button from the header text */
 }
-    
+.action-buttons {
+    display: flex; /* Use flexbox for horizontal layout */
+    gap: 10px; /* Adjust the gap between buttons as needed */
+}

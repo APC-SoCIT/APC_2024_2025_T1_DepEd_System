@@ -98,7 +98,7 @@
                                     <th scope="col">First Name <button type="button" class="btn-sort" data-column="fname"><i class="fa-solid fa-sort"></i></button></th>
                                     <th scope="col">Middle Name <button type="button" class="btn-sort" data-column="mname"><i class="fa-solid fa-sort"></i></button></th>
                                     <th scope="col">Last Name <button type="button" class="btn-sort" data-column="lname"><i class="fa-solid fa-sort"></i></button></th>
-                                    <th scope="col">Action</th>
+                                    <th colspan="2"scope="col"><center>Action<center></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,9 +108,13 @@
                                     <td>{{$student->fname}}</td>
                                     <td>{{$student->mname}}</td>
                                     <td>{{$student->lname}}</td>
+                                    <td><a class="" href=""><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button>
-                                        <button type="button" class="btn btn-danger" id="delete-btn">Delete</button>
+                                            <form type="submit" action="{{ route('studentDelete', ['student' => $student->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -154,6 +158,11 @@
 @if(isset($_GET['registered']))
 <script>
     window.onload = function() { registered(); };
+</script>
+@endif
+@if(isset($_GET['deleted']))
+<script>
+    window.onload = function() { deleted(); };
 </script>
 @endif
 

@@ -20,6 +20,8 @@ Route::get('/dashboard-teacher', [dashboardController::class, 'dashboardTeacher'
 Route::get('/register-student', [dashboardController::class, 'registerStudent'])->name('register-student')->middleware('notTeacher');
 Route::post('/register-student', [dashboardController::class, 'registerStudentPost'])->name('registerStudent.post')->middleware('notTeacher');
 Route::get('/view-student', [dashboardController::class, 'viewStudent'])->name('view-student')->middleware('notTeacher');
+Route::delete('/view-student/{student}/studentDelete', [dashboardController::class, 'studentDelete'])->name('studentDelete')->middleware('notTeacher');
+
 
 
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');

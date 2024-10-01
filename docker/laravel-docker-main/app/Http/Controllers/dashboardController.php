@@ -70,4 +70,8 @@ class dashboardController extends Controller
             return redirect()->route('register-student', ['error' => true]);
         }
     }
+    function studentDelete(User $student){
+        $student->delete();
+        return redirect()->route('view-student', ['deleted' => true]);
+    }
 }
