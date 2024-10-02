@@ -17,13 +17,15 @@ Route::post('/login-student', [loginController::class, 'loginStudentPost'])->nam
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard-teacher', [dashboardController::class, 'dashboardTeacher'])->name('dashboard-teacher')->middleware('notTeacher');
+//Manage Student routing
 Route::get('/register-student', [dashboardController::class, 'registerStudent'])->name('register-student')->middleware('notTeacher');
 Route::post('/register-student', [dashboardController::class, 'registerStudentPost'])->name('registerStudent.post')->middleware('notTeacher');
 Route::get('/view-student', [dashboardController::class, 'viewStudent'])->name('view-student')->middleware('notTeacher');
 Route::get('/update-student/{id}', [dashboardController::class, 'updateStudent'])->name('update-student')->middleware('notTeacher');
 Route::put('/update-student/{id}', [dashboardController::class, 'updateStudentPost'])->name('updateStudent.post')->middleware('notTeacher');
 Route::delete('/view-student/{student}/studentDelete', [dashboardController::class, 'studentDelete'])->name('studentDelete')->middleware('notTeacher');
-
-
+//Manage Section routing
+Route::get('/create-section', [dashboardController::class, 'createSection'])->name('create-section')->middleware('notTeacher');
+Route::get('/view-section', [dashboardController::class, 'viewSection'])->name('view-section')->middleware('notTeacher');
 
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');

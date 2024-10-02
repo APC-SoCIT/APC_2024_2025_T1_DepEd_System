@@ -39,10 +39,10 @@
                         </a>
                         <ul id="section" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">View Sections</a>
+                                <a href="{{route('create-section')}}" class="sidebar-link">Create Section</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Create Section</a>
+                                <a href="{{route('view-section')}}" class="sidebar-link">View Sections</a>
                             </li>
                         </ul>
                     </li>

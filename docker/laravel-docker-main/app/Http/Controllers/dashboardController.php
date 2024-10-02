@@ -31,6 +31,12 @@ class dashboardController extends Controller
     function registerStudent(){
         return view('register-student');
     }
+    function createSection(){
+        return view('create-section');
+    }
+    function viewSection(){
+        return view('view-section');
+    }
     function registerStudentPost(Request $request)
     {
         // Validate the input data
