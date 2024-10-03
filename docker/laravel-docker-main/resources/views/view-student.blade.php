@@ -98,6 +98,8 @@
                                     <th scope="col">First Name <button type="button" class="btn-sort" data-column="fname"><i class="fa-solid fa-sort"></i></button></th>
                                     <th scope="col">Middle Name <button type="button" class="btn-sort" data-column="mname"><i class="fa-solid fa-sort"></i></button></th>
                                     <th scope="col">Last Name <button type="button" class="btn-sort" data-column="lname"><i class="fa-solid fa-sort"></i></button></th>
+                                    <th scope="col">Section<button type="button" class="btn-sort" data-column="section"><i class="fa-solid fa-sort"></i></button></th>
+                                    <th scope="col">Teacher<button type="button" class="btn-sort" data-column="teacher"><i class="fa-solid fa-sort"></i></button></th>
                                     <th colspan="2"scope="col"><center>Action<center></th>
                                 </tr>
                             </thead>
@@ -108,6 +110,8 @@
                                     <td>{{$student->fname}}</td>
                                     <td>{{$student->mname}}</td>
                                     <td>{{$student->lname}}</td>
+                                    <td>{{$student->section}}</td>
+                                    <td>{{$student->tid}}</td>
                                     <td><a class="" href="{{route('update-student', ['id' => $student->id])}}"><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
                                     <td>
                                             <form type="submit" action="{{route('studentDelete', ['student' => $student->id])}}" method="POST">
@@ -185,6 +189,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const fname = row.cells[1].textContent.toLowerCase();
             const mname = row.cells[2].textContent.toLowerCase();
             const lname = row.cells[3].textContent.toLowerCase();
+            const section = row.cells[4].textContent.toLowerCase();
+            const tid = row.cells[5].textContent.toLowerCase();
             if (lrn.includes(searchTerm) || fname.includes(searchTerm) || mname.includes(searchTerm) || lname.includes(searchTerm)) {
                 row.style.display = '';
             } else {
@@ -204,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function sortTable(column, direction) {
         const rowsArray = Array.from(tableRows);
-        const columnIndex = { 'lrn': 0, 'fname': 1, 'mname': 2, 'lname': 3 }[column];
+        const columnIndex = { 'lrn': 0, 'fname': 1, 'mname': 2, 'lname': 3, 'section': 4, 'tid': 5 }[column];
         
         rowsArray.sort((a, b) => {
             const aText = a.cells[columnIndex].textContent.trim().toLowerCase();
