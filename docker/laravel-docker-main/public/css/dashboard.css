@@ -462,3 +462,79 @@ table {
     background-color: #960000;
     box-shadow: 0 0 10px rgba(220, 53, 69, 0.5); /* Optional: Add a soft shadow */
 }
+/* Card styling */
+.card {
+    background-color: white!important;
+    border: 1px solid rgba(16, 53, 172, 0.25); /* Subtle blue border */
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(16, 53, 172, 0.15); /* Softer shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+    min-width: 381.6px;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(16, 53, 172, 0.3); /* Stronger shadow on hover */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #1035AC; /* Blue title */
+    font-weight: 500;
+}
+
+.card-text {
+    color: #1035AC;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-link {
+    color: #1035AC; /* Blue links */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-link:hover {
+    color: #02113d; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+.card-img-top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    object-fit: cover;
+    height: 180px; /* Set a consistent height for images */
+    width: 100%;
+}
+
+.list-group-item {
+    background-color: rgba(16, 53, 172, 0.1); /* Light blue background for list items */
+    color: #1035AC; /* Blue text */
+    border-color:rgba(16, 53, 172, 0.1);
+}
+
+.list-group-item:hover {
+    background-color: rgba(16, 53, 172, 0.2); /* Darker blue on hover */
+}
+
+/* Responsive adjustments for the card layout */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+}
+#section-edit-btn{
+    width:auto;
+    left:0;
+    height: auto;
+}
+#section-assign-btn{
+    width:auto;
+    right:0%;
+    height: auto;
+}

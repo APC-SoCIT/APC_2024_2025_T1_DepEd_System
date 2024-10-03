@@ -81,6 +81,44 @@
                         <center><h1 class="pt-3">Create Section</h1></center>
                     </div>
                     <hr>
+                        <form id="register-student-form" action="{{route('registerStudent.post')}}" method="POST">
+                        @csrf
+                        <br>
+                        <div id="container">
+                            <div class="mb-12 col-sm">
+                                <label class="form-label">Section Name</label> 
+                                <input type="text" class="form-control" id="fname" name="fname" required>  
+                            </div>
+                            <div class="row">
+                                <div class="mb-6 col-sm">
+                                    <label class="form-label">Grade Level</label>
+                                    <select class="form-control center-placeholder" id="sex" name="sex" required>
+                                        <option value="" disabled selected>--</option>
+                                        <option value="1">Grade 1</option>
+                                        <option value="2">Grade 2</option>
+                                        <option value="3">Grade 3</option>
+                                        <option value="4">Grade 4</option>
+                                        <option value="5">Grade 5</option>
+                                        <option value="6">Grade 6</option>
+                                        <!-- Add more options as needed -->
+                                    </select>               
+                                </div>
+                                <div class="mb-6 col-sm">
+                                    <label class="form-label">School Year</label>
+                                    <input type="text" class="form-control" id="lname" name="lname" required placeholder="Format: 20XX-20XX *No Spaces*">
+                                </div>
+                            </div>
+                        </div>
+                        <center>
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 512 512">
+                                <style>svg{fill:#ffffff}</style>
+                                <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                            </svg>
+                            Create Section
+                        </button>
+                        </center>
+                        </form>
                 </div>
             </main>
             <footer class="footer">

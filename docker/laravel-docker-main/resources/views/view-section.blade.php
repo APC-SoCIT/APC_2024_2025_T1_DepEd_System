@@ -79,7 +79,7 @@
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
                     <div>
-                        <h1 class="pt-3">Section Database</h1>
+                        <h1 class="pt-3">My Sections</h1>
                     </div>
                     <hr>
                     <!-- Search Bar -->
@@ -87,6 +87,24 @@
                         <div class="col-md-4">
                             <input type="text" id="search-bar" class="form-control" placeholder="Search by name of section">
                         </div>
+                    </div>
+                    <div class="row-sm">
+                    <div class="col-xl-3">
+                        <div class="card">
+                        <img class="card-img-top" src="https://news.harvard.edu/wp-content/uploads/2022/11/iStock-mathproblems.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Section Name</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Grade Level</li>
+                            <li class="list-group-item">School Year</li>
+                        </ul>
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <a class="" href="#"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">Edit Section</button></a>
+                            <a class="" href="#"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>                       
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </main>
