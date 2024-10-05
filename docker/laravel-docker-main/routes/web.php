@@ -5,14 +5,8 @@ use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\{loginController,dashboardController};
 use Illuminate\Support\Facades\URL;
 
-<<<<<<< HEAD
-$url = config('app.url');
-URL::forceRootUrl($url);
-Route::get('/', [loginController::class, 'login'])->name('login');
-=======
 Route::get('/', [loginController::class, 'login'])->name('login')->middleware('user');
 Route::get('/login', [loginController::class, 'login'])->name('login')->middleware('user');
->>>>>>> refs/remotes/origin/main
 
 Route::get('/register', [loginController::class, 'register'])->name('register')->middleware('user');
 Route::post('/register', [loginController::class, 'registerTeacherPost'])->name('registerTeacher.post');  
@@ -21,12 +15,7 @@ Route::post('/login-teacher', [loginController::class, 'loginTeacherPost'])->nam
 Route::get('/login-student', [loginController::class, 'loginStudent'])->name('login-student')->middleware('user');
 Route::post('/login-student', [loginController::class, 'loginStudentPost'])->name('loginStudent.post');
 
-<<<<<<< HEAD
-Route::get('/login-teacher', [loginController::class, 'loginTeacher'])->name('login-teacher');
-Route::post('/login-teacher/post', [loginController::class, 'loginTeacherPost'])->name('loginTeacherPost');
-=======
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
->>>>>>> refs/remotes/origin/main
 
 Route::get('/dashboard-teacher', [dashboardController::class, 'dashboardTeacher'])->name('dashboard-teacher')->middleware('notTeacher');
 //Manage Student routing
