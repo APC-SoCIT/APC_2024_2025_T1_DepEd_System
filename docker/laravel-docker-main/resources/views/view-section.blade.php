@@ -101,7 +101,7 @@
                                 </ul>
                                 <div class="card-body d-flex justify-content-between align-items-center">
                                     <a href="{{route('update-section', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">Edit Section</button></a>
-                                    <a href="#"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>
+                                    <a href="{{route('assign-student', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>
                                 </div>
                             </div>     
                         </div>

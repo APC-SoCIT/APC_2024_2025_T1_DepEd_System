@@ -32,6 +32,8 @@ Route::get('/view-section', [dashboardController::class, 'viewSection'])->name('
 Route::get('/update-section/{id}', [dashboardController::class, 'updateSection'])->name('update-section')->middleware('notTeacher');
 Route::post('/update-section/{id}', [dashboardController::class, 'updateSectionPost'])->name('updateSection.post')->middleware('notTeacher');
 Route::delete('/update-section/{section}/sectionDelete', [dashboardController::class, 'sectionDelete'])->name('sectionDelete')->middleware('notTeacher');
+Route::get('/assign-student/{id}', [dashboardController::class, 'assignStudent'])->name('assign-student')->middleware('notTeacher');
+
 
 
 

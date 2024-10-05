@@ -15,8 +15,10 @@ use App\Models\Section;
 
 class dashboardController extends Controller
 {
-    function assignStudent(){
-        return view('assign-student');
+    function assignStudent($id){
+        $section = Section::find($id);
+        $students = User::where('role', 'student')->get();
+        return view('assign-student', ['students'=>$students], compact('section'));
     }
     function dashboardTeacher(){
         return view('dashboard-teacher');
