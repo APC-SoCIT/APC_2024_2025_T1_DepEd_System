@@ -168,26 +168,6 @@ a.sidebar-link:hover {
     }
 }
 
-/* Card styling */
-.card {
-    box-shadow: 0 0 0.875rem 0 rgba(34, 46, 60, 0.05);
-    margin-bottom: 24px;
-}
-
-.card-description {
-    width: 50%;
-}
-
-.illustration {
-    background-color: rgba(16, 53, 172, 0.1);
-    color: #1035AC;
-}
-
-.illustration-img {
-    max-width: 150px;
-    width: 100%;
-}
-
 /* Sidebar toggle */
 #sidebar.collapsed {
     margin-left: -264px;
@@ -253,20 +233,6 @@ a.dropdown-item:hover{
     color: #ffff!important;
 }
 
-/* Card body alignment */
-.card-body {
-    display: flex;
-    align-items: center;
-    color: #1035AC;
-}
-
-.text-container {
-    flex-grow: 1;
-}
-
-.card-subtitle {
-    text-align: justify;
-}
 #register-student-container,#view-student,#dashboard{
     height: 100%;
     background-color: white;
@@ -469,7 +435,6 @@ table {
     border-radius: 6px;
     box-shadow: 0 4px 8px rgba(16, 53, 172, 0.15); /* Softer shadow */
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
-    min-width: 381.6px;
 }
 
 .card:hover {
@@ -504,18 +469,11 @@ table {
     text-decoration: underline;
 }
 
-.card-img-top {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    object-fit: cover;
-    height: 180px; /* Set a consistent height for images */
-    width: 100%;
-}
 
 .list-group-item {
     background-color: rgba(16, 53, 172, 0.1); /* Light blue background for list items */
     color: #1035AC; /* Blue text */
-    border-color:rgba(16, 53, 172, 0.1);
+    border-color:rgba(16, 53, 172, 0.1)!important;
 }
 
 .list-group-item:hover {

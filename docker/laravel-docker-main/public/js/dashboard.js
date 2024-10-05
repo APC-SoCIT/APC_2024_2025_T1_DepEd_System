@@ -24,6 +24,19 @@ function updateError(){
         text: "Please try again.",
       });
 };
+function section_creation_error(){
+    Swal.fire({
+        icon: "error",
+        title: "Failed to create Secction",
+        text: "Please try again.",
+      });
+};
+function section_created(){
+    Swal.fire({
+        icon: "success",
+        title: "Section Created!",
+      });
+}
 const sidebarToggle = document.querySelector("#sidebar-toggle");
 sidebarToggle.addEventListener("click",function(){
     document.querySelector("#sidebar").classList.toggle("collapsed");

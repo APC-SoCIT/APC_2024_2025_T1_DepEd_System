@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\{loginController,dashboardController};
-use Illuminate\Support\Facades\URL;
-
+//$url = config('app.url');
+//URL::forceRootUrl($url);
 Route::get('/', [loginController::class, 'login'])->name('login')->middleware('user');
 Route::get('/login', [loginController::class, 'login'])->name('login')->middleware('user');
 
@@ -27,6 +27,7 @@ Route::put('/update-student/{id}', [dashboardController::class, 'updateStudentPo
 Route::delete('/view-student/{student}/studentDelete', [dashboardController::class, 'studentDelete'])->name('studentDelete')->middleware('notTeacher');
 //Manage Section routing
 Route::get('/create-section', [dashboardController::class, 'createSection'])->name('create-section')->middleware('notTeacher');
+Route::post('/create-section', [dashboardController::class, 'createSectionPost'])->name('createSection.post')->middleware('notTeacher');
 Route::get('/view-section', [dashboardController::class, 'viewSection'])->name('view-section')->middleware('notTeacher');
 
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');
