@@ -29,6 +29,10 @@ class dashboardController extends Controller
         $student = User::find($id);
         return view('update-student', compact('student'));
     }
+    function updateSection($id){
+        $section = Section::find($id);
+        return view('update-section', compact('section'));
+    }
     function registerStudent(){
         return view('register-student');
     }
@@ -75,7 +79,7 @@ class dashboardController extends Controller
             $user = User::create($data);
             return redirect()->route('register-student', ['registered' => true]);
         } catch (\Exception $e) {
-            return redirect()->route('register-student', ['error' => true]);
+            return redirect()->route('register-student', ['error' => $e]);
         }
     }
     function createSectionPost(Request $request)
@@ -97,7 +101,7 @@ class dashboardController extends Controller
             $section->school_year = $request->school_year;
             $section->teacher_id = $loggedInUser->tid;
             $section->save();
-            return redirect()->route('create-section', ['created' => true]);
+            return redirect()->route('view-section', ['created' => true]);
         } catch (\Exception $e) {
             return redirect()->route('create-section', ['error' => $e]);
         }
@@ -135,7 +139,31 @@ class dashboardController extends Controller
             $user->update($data);
             return redirect()->route('view-student', ['updated' => true]); // Redirect to view student page
         } catch (\Exception $e) {
-            return redirect()->route('view-student', ['update-error' => true]);
+            return redirect()->route('view-student', ['update-error' => $e]);
         }
+    }
+    function updateSectionPost(Request $request, $id){
+        // Validate the input data
+        $request->validate([
+            'secname' => 'required',
+            'grade' => 'required',
+            'school_year' => 'required',
+        ]);
+
+        // Try to create the new section
+        try {
+            $section = Section::findOrFail($id);
+            $section->secname = $request->secname;
+            $section->grade = $request->grade;
+            $section->school_year = $request->school_year;
+            $section->save();
+            return redirect()->route('view-section', ['updated' => true]);
+        } catch (\Exception $e) {
+            return redirect()->route('view-section', ['error' => $e]);
+        }
+    }
+    function sectionDelete(Section $section){
+        $section->delete();
+        return redirect()->route('view-section', ['deleted' => true]);
     }
 }

@@ -149,9 +149,6 @@
  if(isset($_GET['error'])){
      echo '<script>window.onload = function() { section_creation_error(); }</script>';
  }
- if(isset($_GET['created'])){
-     echo '<script>window.onload = function() { section_created(); }</script>';
- }
 ?>
 @endsection
 @push('script')

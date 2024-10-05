@@ -114,11 +114,11 @@
                                     <td>{{$student->tid}}</td>
                                     <td><a class="" href="{{route('update-student', ['id' => $student->id])}}"><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
                                     <td>
-                                            <form type="submit" action="{{route('studentDelete', ['student' => $student->id])}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
+                                        <form type="submit" action="{{route('studentDelete', ['student' => $student->id])}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
