@@ -56,7 +56,7 @@
             </div>
         </aside>
 
-        <div class="main">
+        <div class="main"  id="card-row">
             <nav class="navbar navbar-expand px-3">
                 <button style="color:white;" class="btn" id="sidebar-toggle" type="button">
                     <span class="navbar-toggler-icon"></span>
@@ -88,23 +88,24 @@
                             <input type="text" id="search-bar" class="form-control" placeholder="Search by name of section">
                         </div>
                     </div>
-                    <div class="row-sm">
-                    <div class="col-xl-3">
-                        <div class="card">
-                        <img class="card-img-top" src="https://news.harvard.edu/wp-content/uploads/2022/11/iStock-mathproblems.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Section Name</h5>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        @foreach($sections as $section)
+                        <div class="col">
+                            <div class=" section-card card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Name: {{$section->secname}}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Grade level: {{$section->grade}}</li>
+                                    <li class="list-group-item">SY: {{$section->school_year}}</li>
+                                </ul>
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <a href="#"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">Edit Section</button></a>
+                                    <a href="#"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>
+                                </div>
+                            </div>     
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Grade Level</li>
-                            <li class="list-group-item">School Year</li>
-                        </ul>
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <a class="" href="#"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">Edit Section</button></a>
-                            <a class="" href="#"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>                       
-                        </div>
-                        </div>
-                    </div>
+                        @endforeach
                     </div>
                 </div>
             </main>

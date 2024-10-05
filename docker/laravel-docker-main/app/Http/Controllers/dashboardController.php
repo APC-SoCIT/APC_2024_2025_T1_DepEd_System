@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth; // Ensure you're using the Auth facade
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Section;
 
 
 class dashboardController extends Controller
@@ -34,8 +35,11 @@ class dashboardController extends Controller
     function createSection(){
         return view('create-section');
     }
-    function viewSection(){
-        return view('view-section');
+    function viewSection() {
+        $loggedInUser = Auth::user();
+        $tid = $loggedInUser->tid;
+        $sections = Section::where('teacher_id', $tid)->get();
+        return view('view-section', ['sections' => $sections]);
     }
     function registerStudentPost(Request $request)
     {
@@ -72,6 +76,30 @@ class dashboardController extends Controller
             return redirect()->route('register-student', ['registered' => true]);
         } catch (\Exception $e) {
             return redirect()->route('register-student', ['error' => true]);
+        }
+    }
+    function createSectionPost(Request $request)
+    {
+        // Validate the input data
+        $request->validate([
+            'secname' => 'required',
+            'grade' => 'required',
+            'school_year' => 'required',
+        ]);
+        // Retrieve logged-in user's tid and sid
+        $loggedInUser = Auth::user();
+
+        // Try to create the new section
+        try {
+            $section = new Section();
+            $section->secname = $request->secname;
+            $section->grade = $request->grade;
+            $section->school_year = $request->school_year;
+            $section->teacher_id = $loggedInUser->tid;
+            $section->save();
+            return redirect()->route('create-section', ['created' => true]);
+        } catch (\Exception $e) {
+            return redirect()->route('create-section', ['error' => $e]);
         }
     }
     function studentDelete(User $student){

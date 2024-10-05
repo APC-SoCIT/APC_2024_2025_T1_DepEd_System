@@ -81,18 +81,18 @@
                         <center><h1 class="pt-3">Create Section</h1></center>
                     </div>
                     <hr>
-                        <form id="register-student-form" action="{{route('registerStudent.post')}}" method="POST">
+                        <form id="register-student-form" action="{{route('createSection.post')}}" method="POST">
                         @csrf
                         <br>
                         <div id="container">
                             <div class="mb-12 col-sm">
                                 <label class="form-label">Section Name</label> 
-                                <input type="text" class="form-control" id="fname" name="fname" required>  
+                                <input type="text" class="form-control" id="secname" name="secname" required>  
                             </div>
                             <div class="row">
                                 <div class="mb-6 col-sm">
                                     <label class="form-label">Grade Level</label>
-                                    <select class="form-control center-placeholder" id="sex" name="sex" required>
+                                    <select class="form-control center-placeholder" id="grade" name="grade" required>
                                         <option value="" disabled selected>--</option>
                                         <option value="1">Grade 1</option>
                                         <option value="2">Grade 2</option>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="mb-6 col-sm">
                                     <label class="form-label">School Year</label>
-                                    <input type="text" class="form-control" id="lname" name="lname" required placeholder="Format: 20XX-20XX *No Spaces*">
+                                    <input type="text" class="form-control" id="school_year" name="school_year" required placeholder="Format: 20XX-20XX *No Spaces*">
                                 </div>
                             </div>
                         </div>
@@ -147,10 +147,10 @@
 </body>
 <?php
  if(isset($_GET['error'])){
-     echo '<script>window.onload = function() { register_error(); }</script>';
+     echo '<script>window.onload = function() { section_creation_error(); }</script>';
  }
- if(isset($_GET['registered'])){
-     echo '<script>window.onload = function() { registered(); }</script>';
+ if(isset($_GET['created'])){
+     echo '<script>window.onload = function() { section_created(); }</script>';
  }
 ?>
 @endsection
