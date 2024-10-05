@@ -15,6 +15,9 @@ use App\Models\Section;
 
 class dashboardController extends Controller
 {
+    function assignStudent(){
+        return view('assign-student')
+    }
     function dashboardTeacher(){
         return view('dashboard-teacher');
     }
