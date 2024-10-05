@@ -11,39 +11,63 @@
 
 <div id="centered-container">
     <center>
+<<<<<<< HEAD
         <img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}">
+=======
+        <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+>>>>>>> refs/remotes/origin/main
         <p id='heading'><b>DepED Teacher Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
-        <form id="login" action="{{route('registerTeacher')}}" method="POST">
+        <form id="login" action="{{route('registerTeacher.post')}}" method="POST">
         @csrf
         <div id="container">
             <div class="row">
-                <div class="mb-3 col-sm">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="fname" name="fname" required>
-                </div>
-                <div class="mb-3 col-sm">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lname" name="lname" required>
-                </div>
+            <div class="mb-3 col-sm">
+                <label class="form-label">First Name</label> 
+                <input type="text" class="form-control" id="fname" name="fname" required>  
+           </div>
+            <div class="mb-3 col-sm">
+                <label class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="mname" name="mname" required>                
             </div>
-        <div class="mb-3">
-            <label class="form-label">School Name</label>
-            <input type="text" class="form-control" id="sname" name="sname" required>
-        </div>
+            <div class="mb-3 col-sm">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" required>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="sid">School Name</label>
+                <select class="form-control center-placeholder" id="sid" name="sid" required>
+                    <option value="" disabled selected>--</option>
+                    <option value="1">Guadalupe Viejo Elementary School</option>
+                    <option value="2">Makati Elementary School</option>
+                    <option value="3">Heneral Pio Del Pilar Elementary School</option>
+                    <option value="4">La Paz Elementary School</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
             <div class="row">
-                <div class="mb-3 col-sm">
-                    <label class="form-label">School ID</label>
-                    <input type="text" class="form-control" id="sid" name="sid" required>
+                <div class="mb-3">
+                    <label class="form-label">Teacher ID</label>
+                    <input type="text" class="form-control" id="tid" name="tid" required>
                 </div>
                 <div class="mb-3 col-sm">
-                    <label class="form-label">District</label>
-                    <input type="text" class="form-control" id="district" name="district" required>
+                <label class="form-label" for="sex">Sex</label>
+                <select class="form-control center-placeholder" id="sex" name="sex" required>
+                    <option value="" disabled selected>--</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <!-- Add more options as needed -->
+                </select>
+                </div>
+                <div class="mb-3 col-sm">
+                    <label class="form-label" for="bday">Birthday</label>
+                    <input type="date" class="form-control" id="bday" name="bday" required>
                 </div>
             </div>
         <div class="mb-3">
             <label class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
             <div class="row">
                 <div class="mb-3 col-sm">

@@ -11,10 +11,14 @@
 
 <div id="centered-container">
     <center>
+<<<<<<< HEAD
         <img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}">
+=======
+    <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+>>>>>>> refs/remotes/origin/main
         <p id='heading'><b>DepED Teacher Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
-        <form id="login" action="{{route('loginTeacherPost')}}" method="POST">
+        <form id="login" action="{{route('loginTeacher.post')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label class="form-label">E-mail</label>

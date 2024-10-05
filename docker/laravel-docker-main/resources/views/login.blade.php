@@ -11,8 +11,13 @@
 
 <div id="centered-container">
     <center>
+<<<<<<< HEAD
         <img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}">
         <p id='heading'><b>DepED Portal</b></p>
+=======
+        <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+        <p id='heading'><b>DepEd Portal</b></p>
+>>>>>>> refs/remotes/origin/main
         <p id='subheading'>Department of Education Record System</p>
         <div class='container'>
             <div class="input-container">

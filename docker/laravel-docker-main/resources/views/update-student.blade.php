@@ -76,8 +76,71 @@
                 </div>
             </nav>
             <main class="content px-3 py-2">
-                <div class="container-fluid" id="dashboard">
-                    Dashboard
+                <div class="container-fluid" id="register-student-container">
+                    <div>
+                        <center><h1 class="pt-3">Update Student Information</h1></center>
+                    </div>
+                    <hr>
+                    <form id="register-student-form" action="{{route('updateStudent.post',['id' => $student->id])}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <br>
+                    <div id="container">
+                        <div class="row">
+                        <div class="mb-3 col-sm">
+                            <label class="form-label">First Name</label> 
+                            <input type="text" class="form-control" id="fname" name="fname" value="{{$student->fname}}" required>  
+                    </div>
+                        <div class="mb-3 col-sm">
+                            <label class="form-label">Middle Name</label>
+                            <input type="text" class="form-control" id="mname" name="mname" value="{{$student->mname}}" required>                
+                        </div>
+                        <div class="mb-3 col-sm">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname" value="{{$student->lname}}" required>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-sm">
+                            <label class="form-label" for="sex">Sex</label>
+                            <select class="form-control center-placeholder" id="sex" name="sex" required>
+                                    @if($student->sex === 'male')
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                    @else
+                                        <option value="male">Male</option>
+                                        <option value="female" selected>Female</option>   
+
+                                    @endif
+                            </select>
+                            </div>
+                            <div class="mb-3 col-sm">
+                                <label class="form-label" for="bday">Birthday</label>
+                                <input type="date" class="form-control" id="bday" name="bday" value="{{$student->bday}}" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-sm">
+                                <label class="form-label">LRN</label>
+                                <input type="text" class="form-control" id="lrn" name="lrn" value="{{$student->lrn}}" required>
+                            </div>
+                            <div class="mb-3 col-sm">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{$student->email}}" required>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <center>
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 512 512">
+                            <style>svg{fill:#ffffff}</style>
+                            <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                        </svg>
+                        Update Information
+                    </button>
+                    </center>
+                    </form>
                 </div>
             </main>
             <footer class="footer">
@@ -103,6 +166,17 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/dashboard.js')}}"></script>
 </body>
+<?php
+ if(isset($_GET['error'])){
+     echo '<script>window.onload = function() { register_error(); }</script>';
+ }
+ if(isset($_GET['registered'])){
+     echo '<script>window.onload = function() { registered(); }</script>';
+ }
+?>
 @endsection
+@push('script')
+<script src="{{ asset('js/dashboard.js')}}"></script>
+<script src="{{ asset('js/login.js')}}"></script>
+@endpush

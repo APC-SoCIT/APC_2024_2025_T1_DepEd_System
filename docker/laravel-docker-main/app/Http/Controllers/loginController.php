@@ -33,14 +33,16 @@ class loginController extends Controller
     function registerError(){
         return view('register?error');
     }
-    function registerTeacher(Request $request){
+    function registerTeacherPost(Request $request){
             try{
                 $request->validate([
                     'fname' => 'required',
+                    'mname' => 'required',
                     'lname' => 'required',
-                    'sname' => 'required',
                     'sid' => 'required',
-                    'district' => 'required',
+                    'tid' => 'required',
+                    'sex' => 'required',
+                    'bday' => 'required',
                     'email' => 'required|email|unique:users,email',
                     'password' => 'required',
                     'password_confirmation' => 'required',
@@ -53,11 +55,14 @@ class loginController extends Controller
             }            
             $data = [
                 'fname' => $request->fname,
+                'mname' => $request->mname,
                 'lname' => $request->lname,
-                'sname' => $request->sname,
                 'sid' => $request->sid,
-                'district' => $request->district,
+                'tid' => $request->tid,
+                'sex' => $request->sex,
+                'bday' => $request->bday,
                 'email' => $request->email,
+                'role' =>'teacher',
                 'password' => Hash::make($request->password),
             ];
         
@@ -67,5 +72,34 @@ class loginController extends Controller
             } catch (\Exception $e) {
                 return redirect()->route('register', http_build_query(array_merge(\Request::query(), ['error' => true])));
             }
+    }
+    function loginTeacherPost(Request $request){
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        $credentials = $request->only('email','password');
+        if(Auth::attempt($credentials)){
+            return redirect()->route('dashboard-teacher');
+        }else{
+            return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['error' => true])));
+        }
+    }
+    function loginStudentPost(Request $request){
+        $request->validate([
+            'lrn'=>'required',
+            'password'=>'required'
+        ]);
+        $credentials = $request->only('lrn','password');
+        if(Auth::attempt($credentials)){
+            return redirect()->route('dashboard-student');
+        }else{
+            return redirect()->route('login-student', http_build_query(array_merge(\Request::query(), ['error' => true])));
+        }
+    }
+    function logout(){
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
