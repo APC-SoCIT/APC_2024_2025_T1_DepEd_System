@@ -33,8 +33,7 @@ Route::get('/update-section/{id}', [dashboardController::class, 'updateSection']
 Route::post('/update-section/{id}', [dashboardController::class, 'updateSectionPost'])->name('updateSection.post')->middleware('notTeacher');
 Route::delete('/update-section/{section}/sectionDelete', [dashboardController::class, 'sectionDelete'])->name('sectionDelete')->middleware('notTeacher');
 Route::get('/assign-student/{id}', [dashboardController::class, 'assignStudent'])->name('assign-student')->middleware('notTeacher');
-
-
-
+Route::post('/assign-student/{id}/assign', [dashboardController::class, 'assignStudentPost'])->name('assignStudent.post')->middleware('notTeacher');
+Route::post('/assign-student/{id}/remove', [dashboardController::class, 'removeStudentPost'])->name('removeStudent.post')->middleware('notTeacher');
 
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');

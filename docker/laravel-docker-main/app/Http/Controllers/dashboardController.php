@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth; // Ensure you're using the Auth facade
 use Illuminate\Support\Facades\Hash;
@@ -17,8 +18,13 @@ class dashboardController extends Controller
 {
     function assignStudent($id){
         $section = Section::find($id);
-        $students = User::where('role', 'student')->get();
-        return view('assign-student', ['students'=>$students], compact('section'));
+        $students = DB::table('users')
+            ->select('users.id', 'users.lrn', 'users.fname', 'users.mname', 'users.lname', 'users.section', 'users.tid', 'section.secname') // Ensure proper selection
+            ->where('users.role', 'student')
+            ->leftJoin('section', 'users.section', '=', 'section.id') // Adjusted table name
+            ->get();
+    
+        return view('assign-student', ['students' => $students], compact('section'));
     }
     function dashboardTeacher(){
         return view('dashboard-teacher');
@@ -170,5 +176,35 @@ class dashboardController extends Controller
     function sectionDelete(Section $section){
         $section->delete();
         return redirect()->route('view-section', ['deleted' => true]);
+    }
+    function assignStudentPost(Request $request, $sectionId){
+        // Loop through each student in the request
+        foreach ($request->input('students') as $studentId => $studentData) {
+            // Check if the student was selected for assigning
+            if ($studentData['assign'] == 1) {
+                // Update the student's section or other details
+                User::where('id', $studentId)->update([
+                    'section' => $sectionId,
+                    // You can update more fields here if needed
+                ]);
+            }
+        }
+
+        return redirect()->to(route('assign-student', $sectionId) . '?added');
+    }
+    function removeStudentPost(Request $request, $sectionId){
+        // Loop through each student in the request
+        foreach ($request->input('students') as $studentId => $studentData) {
+            // Check if the student was selected for assigning
+            if ($studentData['assign'] == 1) {
+                // Update the student's section or other details
+                User::where('id', $studentId)->update([
+                    'section' => null,
+                    // You can update more fields here if needed
+                ]);
+            }
+        }
+
+        return redirect()->to(route('assign-student', $sectionId) . '?removed');
     }
 }
