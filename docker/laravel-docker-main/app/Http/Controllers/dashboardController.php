@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth; // Ensure you're using the Auth facade
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Section;
-
+use App\Models\Record;
 
 class dashboardController extends Controller
 {
@@ -185,8 +185,15 @@ class dashboardController extends Controller
                 // Update the student's section or other details
                 User::where('id', $studentId)->update([
                     'section' => $sectionId,
-                    // You can update more fields here if needed
                 ]);
+                //Create record for student
+                for ($i = 1; $i < 5; $i++) {
+                    $record = new Record();
+                    $record->user_id = $studentId;
+                    $record->quarter = $i;
+                    $record->section = $sectionId;
+                    $record->save();
+                }
             }
         }
 
@@ -202,6 +209,10 @@ class dashboardController extends Controller
                     'section' => null,
                     // You can update more fields here if needed
                 ]);
+
+                Record::where('user_id', $studentId)
+                ->where('section', $sectionId)
+                ->delete();
             }
         }
 
