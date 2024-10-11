@@ -224,4 +224,8 @@ class dashboardController extends Controller
         $sections = Section::where('teacher_id', $tid)->get();
         return view('manage-grades', ['sections' => $sections]);
     }
+    function viewGrades($id){
+        $section = Section::find($id);
+        return view('view-grades', compact('section'));
+    }
 }

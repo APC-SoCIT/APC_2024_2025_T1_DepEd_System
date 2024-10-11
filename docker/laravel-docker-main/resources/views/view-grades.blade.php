@@ -48,7 +48,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="{{route('manage-grades')}}" class="sidebar-link">
-                            <i class="fa-solid fa-list pe-2"></i> Manage Grades
+                            <i class="fa-solid fa-medal"></i> Manage Grades
                         </a>
                     </li>
                 </ul>
@@ -78,33 +78,10 @@
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
                     <div>
-                        <h1 class="pt-3">Manage Grades</h1>
+                        <h1 class="pt-3">{{$section->secname}}</h1>
                     </div>
                     <hr>
-                    <!-- Search Bar -->
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <input type="text" id="search-bar" class="form-control" placeholder="Search by name, grade level, or school year">
-                        </div>
-                    </div>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        @foreach($sections as $section)
-                        <div class="col">
-                            <div class=" section-card card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Name: {{$section->secname}}</h5>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Grade level: {{$section->grade}}</li>
-                                    <li class="list-group-item">SY: {{$section->school_year}}</li>
-                                </ul>
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('view-grades', ['id' => $section->id]) }}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
-                                </div>
-                            </div>     
-                        </div>
-                        @endforeach
-                    </div>
+                    
                 </div>
             </main>
 
@@ -133,42 +110,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<?php
- if(isset($_GET['error'])){
-     echo '<script>window.onload = function() { section_update_error(); }</script>';
- }
- if(isset($_GET['updated'])){
-     echo '<script>window.onload = function() { section_updated(); }</script>';
- }
- if(isset($_GET['deleted'])){
-    echo '<script>window.onload = function() { section_deleted(); }</script>';
-}
-if(isset($_GET['created'])){
-    echo '<script>window.onload = function() { section_created(); }</script>';
-}
-?>
 @endsection
 @push('script')
 <script src="{{ asset('js/dashboard.js')}}"></script>
 <script src="{{ asset('js/login.js')}}"></script>
-<script>
-document.getElementById('search-bar').addEventListener('input', function() {
-    let searchTerm = this.value.toLowerCase();
-    let sectionCards = document.querySelectorAll('.section-card');
-
-    sectionCards.forEach(function(card) {
-        let sectionName = card.querySelector('.card-title').innerText.toLowerCase();
-        let gradeLevel = card.querySelector('.list-group-item:nth-child(1)').innerText.toLowerCase();
-        let schoolYear = card.querySelector('.list-group-item:nth-child(2)').innerText.toLowerCase();
-
-        if (sectionName.includes(searchTerm) || gradeLevel.includes(searchTerm) || schoolYear.includes(searchTerm)) {
-            card.parentElement.style.display = ''; // Show card
-        } else {
-            card.parentElement.style.display = 'none'; // Hide card
-        }
-    });
-});
-</script>
-
 <!-- Search and Sort Script -->
 @endpush
