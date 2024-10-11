@@ -226,6 +226,11 @@ class dashboardController extends Controller
     }
     function viewGrades($id){
         $section = Section::find($id);
-        return view('view-grades', compact('section'));
+        $records = DB::table('records')
+            ->leftJoin('section', 'records.section', '=', 'section.id') // Adjusted table name
+            ->select('records.id', 'records.user_id','records.quarter','records.section','records.mother_tongue','records.filipino','records.english','records.math','records.ap','records.esp','records.mapeh','records.music','records.arts','records.pe','section.secname','section.grade','section.school_year') // Ensure proper selection
+            ->where('records.section', $id)
+            ->get();
+        return view('view-grades', compact('section'), ['records' => $records]);
     }
 }
