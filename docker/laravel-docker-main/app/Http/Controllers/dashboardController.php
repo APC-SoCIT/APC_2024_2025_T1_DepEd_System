@@ -218,4 +218,10 @@ class dashboardController extends Controller
 
         return redirect()->to(route('assign-student', $sectionId) . '?removed');
     }
+    function manageGrades(){
+        $loggedInUser = Auth::user();
+        $tid = $loggedInUser->tid;
+        $sections = Section::where('teacher_id', $tid)->get();
+        return view('manage-grades', ['sections' => $sections]);
+    }
 }

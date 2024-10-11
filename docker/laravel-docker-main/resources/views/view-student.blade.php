@@ -47,10 +47,9 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#grades" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-solid fa-medal"></i> Manage Grades
+                        <a href="{{route('manage-grades')}}" class="sidebar-link">
+                            <i class="fa-solid fa-medal"></i> Manage Grades
                         </a>
-                        <ul id="grades" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar"></ul>
                     </li>
                 </ul>
             </div>

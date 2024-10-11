@@ -48,7 +48,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="{{route('manage-grades')}}" class="sidebar-link">
-                            <i class="fa-solid fa-medal"></i> Manage Grades
+                            <i class="fa-solid fa-list pe-2"></i> Manage Grades
                         </a>
                     </li>
                 </ul>
@@ -78,7 +78,7 @@
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
                     <div>
-                        <h1 class="pt-3">My Sections</h1>
+                        <h1 class="pt-3">Manage Grades</h1>
                     </div>
                     <hr>
                     <!-- Search Bar -->
@@ -99,8 +99,7 @@
                                     <li class="list-group-item">SY: {{$section->school_year}}</li>
                                 </ul>
                                 <div class="card-body d-flex justify-content-between align-items-center">
-                                    <a href="{{route('update-section', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">Edit Section</button></a>
-                                    <a href="{{route('assign-student', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm ml-3" id="section-assign-btn">Assign Students</button></a>
+                                    <a href="{{route('update-section', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
                                 </div>
                             </div>     
                         </div>

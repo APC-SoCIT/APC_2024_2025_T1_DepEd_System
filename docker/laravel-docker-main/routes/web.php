@@ -35,5 +35,7 @@ Route::delete('/update-section/{section}/sectionDelete', [dashboardController::c
 Route::get('/assign-student/{id}', [dashboardController::class, 'assignStudent'])->name('assign-student')->middleware('notTeacher');
 Route::post('/assign-student/{id}/assign', [dashboardController::class, 'assignStudentPost'])->name('assignStudent.post')->middleware('notTeacher');
 Route::post('/assign-student/{id}/remove', [dashboardController::class, 'removeStudentPost'])->name('removeStudent.post')->middleware('notTeacher');
+//Manage Record routing
+Route::get('/manage-grades', [dashboardController::class, 'manageGrades'])->name('manage-grades')->middleware('notTeacher');
 
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');
