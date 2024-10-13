@@ -37,6 +37,7 @@ Route::post('/assign-student/{id}/assign', [dashboardController::class, 'assignS
 Route::post('/assign-student/{id}/remove', [dashboardController::class, 'removeStudentPost'])->name('removeStudent.post')->middleware('notTeacher');
 //Manage Record routing
 Route::get('/manage-grades', [dashboardController::class, 'manageGrades'])->name('manage-grades')->middleware('notTeacher');
+Route::get('/view-section-grade/{id}', [dashboardController::class, 'viewSectionGrade'])->name('view-section-grade')->middleware('notTeacher');
 Route::get('/view-grades/{id}', [dashboardController::class, 'viewGrades'])->name('view-grades')->middleware('notTeacher');
 //Student Portal
 Route::get('/dashboard-student', [dashboardController::class, 'dashboardStudent'])->name('dashboard-student')->middleware('notStudent');

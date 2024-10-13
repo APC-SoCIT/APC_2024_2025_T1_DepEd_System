@@ -1,6 +1,7 @@
 @extends('layouts.dashboard-layout')
 
 @section('content')
+<link href="{{asset('css/grades.css')}}" rel="stylesheet">
 <body>
     <div class="wrapper">
         <aside id="sidebar" class="js-sidebar">
@@ -80,8 +81,303 @@
                     <div>
                         <h1 class="pt-3">{{$section->secname}}</h1>
                     </div>
+                    <div class="container">
+                        <div class="row info-container align-items-center">
+                            <div class="col-auto info-item">
+                                <b>LRN:</b> 2021-Sample
+                            </div>
+                            <div class="col-auto info-item">
+                                <b>NAME:</b> Sample Name
+                            </div>
+                            <div class="col-auto file-input-container">
+                                <form id="file-upload-form">
+                                    <label for="formFileSm" class="custom-file-upload btn btn-primary">
+                                        Upload via Picture
+                                    </label>
+                                    <input class="form-control-file file-input-sm" id="formFileSm" type="file" required hidden>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
-                    
+                    <div>
+                        <table class="table" id="record-student-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Learning Areas</th>
+                                        <th scope="col"><center>Q1</center></th>
+                                        <th scope="col"><center>Q2</center></th>
+                                        <th scope="col"><center>Q3</center></th>
+                                        <th scope="col"><center>Q4</center></th>
+                                        <th scope="col"><center>Final Grade</center></th>
+                                        <th scope="col"><center>Remarks</center></th>
+                                    </tr>
+                                </thead>
+                                <form>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mother Tongue</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Filipino</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>English</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Math</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Araling Panlipunan</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Edukasyon sa Pagpapakatao</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MAPEH</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Music</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arts</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Education</td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td>  
+                                                <center>
+                                                <input type="text" class="form-control-grades input-sm" id="" name="" value="">
+                                                </center>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <center>
+                                <button type="submit" class="btn btn-primary mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512">
+                                        <style>svg{fill:#ffffff}</style>
+                                        <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                                    </svg>
+                                    Save    
+                                </button>
+                                </center>
+                            </form>
+                    </div>                    
                 </div>
             </main>
 
@@ -114,5 +410,10 @@
 @push('script')
 <script src="{{ asset('js/dashboard.js')}}"></script>
 <script src="{{ asset('js/login.js')}}"></script>
+<script>
+document.getElementById('formFileSm').addEventListener('change', function() {
+    document.getElementById('file-upload-form').submit();
+});
+</script>
 <!-- Search and Sort Script -->
 @endpush

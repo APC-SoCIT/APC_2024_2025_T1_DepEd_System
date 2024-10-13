@@ -225,12 +225,22 @@ class dashboardController extends Controller
         return view('manage-grades', ['sections' => $sections]);
     }
     function viewGrades($id){
-        $section = Section::find($id);
+        $section = User::find($id);
         $records = DB::table('records')
             ->leftJoin('section', 'records.section', '=', 'section.id') // Adjusted table name
             ->select('records.id', 'records.user_id','records.quarter','records.section','records.mother_tongue','records.filipino','records.english','records.math','records.ap','records.esp','records.mapeh','records.music','records.arts','records.pe','section.secname','section.grade','section.school_year') // Ensure proper selection
-            ->where('records.section', $id)
+            ->where('records.user_id', $id)
             ->get();
         return view('view-grades', compact('section'), ['records' => $records]);
+    }
+    function viewSectionGrade($id){
+        $section = Section::find($id);
+        $students = DB::table('users')
+            ->select('users.id', 'users.lrn', 'users.fname', 'users.mname', 'users.lname', 'users.section', 'users.tid', 'section.secname') // Ensure proper selection
+            ->where('users.role', 'student')
+            ->leftJoin('section', 'users.section', '=', 'section.id') // Adjusted table name
+            ->get();
+    
+        return view('view-section-grade', ['students' => $students], compact('section'));
     }
 }

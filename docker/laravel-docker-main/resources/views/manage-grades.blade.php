@@ -99,7 +99,7 @@
                                     <li class="list-group-item">SY: {{$section->school_year}}</li>
                                 </ul>
                                 <div class="card-body d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('view-grades', ['id' => $section->id]) }}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
+                                    <a href="{{ route('view-section-grade', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
                                 </div>
                             </div>     
                         </div>
