@@ -78,9 +78,7 @@
 
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
-                    <div>
-                        <h1 class="pt-3">{{$section->secname}}</h1>
-                    </div>
+                    <br>
                     <div class="container">
                         <div class="row info-container align-items-center">
                             <div class="col-auto info-item">
@@ -90,7 +88,8 @@
                                 <b>NAME:</b> Sample Name
                             </div>
                             <div class="col-auto file-input-container">
-                                <form id="file-upload-form">
+                                <form id="file-upload-form" action="{{route('upload-grades-gemini')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <label for="formFileSm" class="custom-file-upload btn btn-primary">
                                         Upload via Picture
                                     </label>
