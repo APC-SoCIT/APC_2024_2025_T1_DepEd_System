@@ -1,0 +1,32 @@
+#shadow {
+    background-color: rgba(16, 53, 172, 0.85);
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#centered-container-schools{
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 85%;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    transition: transform 0.3s ease;
+}
+#centered-container-schools:hover {
+    transform: translate(-50%, -50%) scale(1.02);
+}
+th[col-name="name"] { width: 20%; }
+th[col-name="region"] { width: 15%; }
+th[col-name="division"] { width: 15%; }
+th[col-name="district"] { width: 15%; }
+th[col-name="address"] { width: 25%; }
+th[col-name="action"] { width: 10%; }

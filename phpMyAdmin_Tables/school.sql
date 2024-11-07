@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: db:3306
--- Generation Time: Sep 26, 2024 at 05:55 AM
--- Server version: 8.1.0
--- PHP Version: 8.2.8
+-- Host: localhost:3306
+-- Generation Time: Nov 07, 2024 at 01:51 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,18 +33,21 @@ CREATE TABLE `school` (
   `region` varchar(255) NOT NULL,
   `division` varchar(255) NOT NULL,
   `district` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL
+  `address` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `school`
 --
 
-INSERT INTO `school` (`id`, `name`, `region`, `division`, `district`, `address`) VALUES
-(1, 'Guadalupe Viejo Elementary School', 'NCR', 'Makati', 'District I', 'Progreso St. Guadalupe, Viejo'),
-(2, 'Makati Elementary School', 'NCR', 'Makati', 'District I', 'General Luna St Poblacion'),
-(3, 'Heneral Pio Del Pilar Elementary School', 'NCR', 'Makati', 'District 2', 'P. Binay Cor. Arnaiz St., Pio Del Pilar'),
-(4, 'La Paz Elementary School', 'NCR', 'Makati', 'District 3', 'Dumas St., Barangay La Paz');
+INSERT INTO `school` (`id`, `name`, `region`, `division`, `district`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Guadalupe Viejo Elementary School', 'NCR', 'Makati', 'District I', 'Progreso St. Guadalupe, Viejo', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Makati Elementary School', 'NCR', 'Makati', 'District I', 'General Luna St Poblacion', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Heneral Pio Del Pilar Elementary School', 'NCR', 'Makati', 'District 2', 'P. Binay Cor. Arnaiz St., Pio Del Pilar', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'La Paz Elementary School', 'NCR', 'Makati', 'District 3', 'Dumas St., Barangay La Paz', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Test1', 'NCR', 'Makati', 'District 2', 'test', '2024-11-06 17:43:38', '2024-11-06 17:43:38');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +67,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

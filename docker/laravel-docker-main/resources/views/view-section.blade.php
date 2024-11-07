@@ -67,7 +67,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -146,6 +146,9 @@
 }
 if(isset($_GET['created'])){
     echo '<script>window.onload = function() { section_created(); }</script>';
+}
+if(isset($_GET['archived'])){
+    echo '<script>window.onload = function() { section_archived(); }</script>';
 }
 ?>
 @endsection

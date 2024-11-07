@@ -67,7 +67,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -109,7 +109,7 @@
                                     <td>{{$student->fname}}</td>
                                     <td>{{$student->mname}}</td>
                                     <td>{{$student->lname}}</td>
-                                    <td>{{$student->section}}</td>
+                                    <td>{{$student->secname ?? 'N/A'}}</td>
                                     <td>{{$student->tid}}</td>
                                     <td><a class="" href="{{route('update-student', ['id' => $student->id])}}"><button type="button" class="btn btn-primary" id="view-edit-btn">View/Update</button></a></td>
                                     <td>

@@ -65,7 +65,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -74,8 +74,15 @@
             </nav>
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="register-student-container">
-                    <div>
-                        <center><h1 class="pt-3">Update Student Information</h1></center>
+                    <div class='row d-flex justify-content-between align-items-center'>
+                        <div class="col-sm-auto">
+                            <h1 class="pt-3">Update Student Information</h1>
+                        </div>
+                        <div class="col-sm-auto">
+                            <a href="{{route('view-student')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left"></i> Back
+                            </a>
+                        </div>
                     </div>
                     <hr>
                     <form id="register-student-form" action="{{route('updateStudent.post',['id' => $student->id])}}" method="POST">

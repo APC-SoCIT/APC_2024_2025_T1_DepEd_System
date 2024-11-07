@@ -19,8 +19,9 @@ class Record extends Model
      */
     protected $fillable = [
         'user_id',
+        'section',
         'quarter',
-        'mother_tongue',
+        'mt',
         'filipino',
         'english',
         'math',
@@ -30,5 +31,6 @@ class Record extends Model
         'music',
         'arts',
         'pe',
+        'health',
     ];
 }

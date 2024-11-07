@@ -67,7 +67,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -81,28 +81,63 @@
                         <h1 class="pt-3">Manage Grades</h1>
                     </div>
                     <hr>
+                    <div>
+                        <h3 class="pt-3">Active Sections</h3>
+                    </div>
                     <!-- Search Bar -->
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-md-4">
-                            <input type="text" id="search-bar" class="form-control" placeholder="Search by name, grade level, or school year">
+                            <input type="text" id="search-bar-active" class="form-control" placeholder="Search by name, grade level, or school year">
                         </div>
                     </div>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="active-sections">
                         @foreach($sections as $section)
-                        <div class="col">
-                            <div class=" section-card card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Name: {{$section->secname}}</h5>
+                            @if($section->status === "active")
+                                <div class="col">
+                                    <div class=" section-card card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Name: {{$section->secname}}</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Grade level: {{$section->grade}}</li>
+                                            <li class="list-group-item">SY: {{$section->school_year}}</li>
+                                        </ul>
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <a href="{{ route('view-section-grade', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
+                                        </div>
+                                    </div>     
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Grade level: {{$section->grade}}</li>
-                                    <li class="list-group-item">SY: {{$section->school_year}}</li>
-                                </ul>
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('view-section-grade', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
-                                </div>
-                            </div>     
+                            @endif
+                        @endforeach
+                    </div>
+                    <hr>
+                    <div>
+                        <h3 class="pt-3">Archived Sections</h3>
+                    </div>
+                    <!-- Search Bar -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" id="search-bar-archived" class="form-control" placeholder="Search by name, grade level, or school year">
                         </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="archived-sections">
+                        @foreach($sections as $section)
+                            @if($section->status === "archived")
+                                <div class="col">
+                                    <div class=" section-card card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Name: {{$section->secname}}</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Grade level: {{$section->grade}}</li>
+                                            <li class="list-group-item">SY: {{$section->school_year}}</li>
+                                        </ul>
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <a href="{{ route('view-section-archived-grade', ['id' => $section->id])}}"><button type="button" class="btn btn-primary btn-sm" id="section-edit-btn">View Grades</button></a>
+                                        </div>
+                                    </div>     
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -152,22 +187,28 @@ if(isset($_GET['created'])){
 <script src="{{ asset('js/dashboard.js')}}"></script>
 <script src="{{ asset('js/login.js')}}"></script>
 <script>
-document.getElementById('search-bar').addEventListener('input', function() {
-    let searchTerm = this.value.toLowerCase();
-    let sectionCards = document.querySelectorAll('.section-card');
+function filterSections(searchBarId, sectionContainerId) {
+    document.getElementById(searchBarId).addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase();
+        let sectionCards = document.querySelectorAll(`#${sectionContainerId} .section-card`);
 
-    sectionCards.forEach(function(card) {
-        let sectionName = card.querySelector('.card-title').innerText.toLowerCase();
-        let gradeLevel = card.querySelector('.list-group-item:nth-child(1)').innerText.toLowerCase();
-        let schoolYear = card.querySelector('.list-group-item:nth-child(2)').innerText.toLowerCase();
+        sectionCards.forEach(function(card) {
+            let sectionName = card.querySelector('.card-title').innerText.toLowerCase();
+            let gradeLevel = card.querySelector('.list-group-item:nth-child(1)').innerText.toLowerCase();
+            let schoolYear = card.querySelector('.list-group-item:nth-child(2)').innerText.toLowerCase();
 
-        if (sectionName.includes(searchTerm) || gradeLevel.includes(searchTerm) || schoolYear.includes(searchTerm)) {
-            card.parentElement.style.display = ''; // Show card
-        } else {
-            card.parentElement.style.display = 'none'; // Hide card
-        }
+            if (sectionName.includes(searchTerm) || gradeLevel.includes(searchTerm) || schoolYear.includes(searchTerm)) {
+                card.parentElement.style.display = ''; // Show card
+            } else {
+                card.parentElement.style.display = 'none'; // Hide card
+            }
+        });
     });
-});
+}
+
+// Apply the filter function to both search bars
+filterSections('search-bar-active', 'active-sections');
+filterSections('search-bar-archived', 'archived-sections');
 </script>
 
 <!-- Search and Sort Script -->

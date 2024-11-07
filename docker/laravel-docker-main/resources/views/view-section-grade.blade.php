@@ -67,7 +67,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -77,8 +77,15 @@
 
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
-					<div>
-                        <h3 class="pt-3">{{$section->secname}}</h3>
+                    <div class='row d-flex justify-content-between align-items-center'>
+                        <div class="col-sm-auto">
+                            <h1 class="pt-3 mb-0">{{$section->secname}}</h1>
+                        </div>
+                        <div class="col-sm-auto">
+                            <a href="{{route('manage-grades')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left"></i> Back
+                            </a>
+                        </div>
                     </div>
                     <hr>
 					<!-- Search Bar -->
@@ -162,91 +169,45 @@
 
 <!-- Search and Sort Script -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Search for students in the section table
-    const searchBarSection = document.getElementById('search-bar-section');
-    const sectionTableRows = document.querySelectorAll('#section-student-table tbody tr');
-
-    searchBarSection.addEventListener('keyup', function() {
-        const searchTerm = searchBarSection.value.toLowerCase();
-        sectionTableRows.forEach(row => {
-            const lrn = row.cells[0].textContent.toLowerCase();
-            const fname = row.cells[1].textContent.toLowerCase();
-            const mname = row.cells[2].textContent.toLowerCase();
-            const lname = row.cells[3].textContent.toLowerCase();
-            const section = row.cells[4].textContent.toLowerCase();
-            if (lrn.includes(searchTerm) || fname.includes(searchTerm) || mname.includes(searchTerm) || lname.includes(searchTerm)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
+// Add sorting functionality for section table
+const sectionSortButtons = document.querySelectorAll('#section-student-table .btn-sort');
+sectionSortButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const column = button.getAttribute('data-column');
+        const direction = button.dataset.direction || 'asc';
+        sortTable('#section-student-table', column, direction);
+        button.dataset.direction = (direction === 'asc') ? 'desc' : 'asc';
     });
-
-    // Search for students in the database
-    const searchBarDatabase = document.getElementById('search-bar-database');
-    const databaseTableRows = document.querySelectorAll('#student-table tbody tr');
-
-    searchBarDatabase.addEventListener('keyup', function() {
-        const searchTerm = searchBarDatabase.value.toLowerCase();
-        databaseTableRows.forEach(row => {
-            const lrn = row.cells[0].textContent.toLowerCase();
-            const fname = row.cells[1].textContent.toLowerCase();
-            const mname = row.cells[2].textContent.toLowerCase();
-            const lname = row.cells[3].textContent.toLowerCase();
-            if (lrn.includes(searchTerm) || fname.includes(searchTerm) || mname.includes(searchTerm) || lname.includes(searchTerm)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
-
-    // Add sorting functionality for section table
-    const sectionSortButtons = document.querySelectorAll('#section-student-table .btn-sort');
-    sectionSortButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const column = button.getAttribute('data-column');
-            const direction = button.dataset.direction || 'asc';
-            sortTable('#section-student-table', column, direction);
-            button.dataset.direction = (direction === 'asc') ? 'desc' : 'asc';
-        });
-    });
-
-    // Add sorting functionality for database table
-    const databaseSortButtons = document.querySelectorAll('#student-table .btn-sort');
-    databaseSortButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const column = button.getAttribute('data-column');
-            const direction = button.dataset.direction || 'asc';
-            sortTable('#student-table', column, direction);
-            button.dataset.direction = (direction === 'asc') ? 'desc' : 'asc';
-        });
-    });
-
-    function sortTable(tableSelector, column, direction) {
-        const table = document.querySelector(tableSelector);
-        const rowsArray = Array.from(table.querySelectorAll('tbody tr'));
-        const columnIndex = { 
-            'lrn': 0, 
-            'fname': 1, 
-            'mname': 2, 
-            'lname': 3, 
-            'section': 4, 
-            'tid': 5 
-        }[column];
-
-        // Log the current column being sorted for debugging
-        console.log(`Sorting column: ${column} in ${direction} order`);
-
-        rowsArray.sort((a, b) => {
-            const aText = a.cells[columnIndex].textContent.trim().toLowerCase();
-            const bText = b.cells[columnIndex].textContent.trim().toLowerCase();
-            return direction === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText);
-        });
-
-        rowsArray.forEach(row => table.querySelector('tbody').appendChild(row));
-    }
 });
+
+function sortTable(tableSelector, column, direction) {
+    const table = document.querySelector(tableSelector);
+    const rowsArray = Array.from(table.querySelectorAll('tbody tr'));
+    const columnIndex = {
+        'lrn': 0,
+        'fname': 1,
+        'mname': 2,
+        'lname': 3,
+        // If there's a specific column index for actions, consider its index
+        'section': 4, 
+    }[column];
+
+    // Log the current column being sorted for debugging
+    console.log(`Sorting column: ${column} in ${direction} order`);
+
+    rowsArray.sort((a, b) => {
+        const aText = a.cells[columnIndex].textContent.trim().toLowerCase();
+        const bText = b.cells[columnIndex].textContent.trim().toLowerCase();
+        
+        if (direction === 'asc') {
+            return aText.localeCompare(bText);
+        } else {
+            return bText.localeCompare(aText);
+        }
+    });
+
+    // Append sorted rows back to the table body
+    rowsArray.forEach(row => table.querySelector('tbody').appendChild(row));
+}
 </script>
 @endpush

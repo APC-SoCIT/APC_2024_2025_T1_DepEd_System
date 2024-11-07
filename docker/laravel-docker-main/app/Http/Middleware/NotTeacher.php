@@ -19,9 +19,14 @@ class NotTeacher
             if (auth()->user()->role === 'teacher') {
                 // Proceed with the request
                 return $next($request);
-            }elseif (auth()->user()->role === 'student'){
+            }
+            elseif (auth()->user()->role === 'student'){
                 // Redirect to student dashboard
                 return redirect()->route('dashboard-student');
+            }
+            elseif (auth()->user()->role === 'admin'){
+                // Redirect to admin dashboard
+                return redirect()->route('dashboard-admin');
             }
         }else{
             return redirect()->route('login');

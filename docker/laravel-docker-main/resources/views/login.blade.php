@@ -11,7 +11,6 @@
 
 <div id="centered-container">
     <center>
-        <p id='heading'><b>DepED Portal</b></p>
         <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
         <p id='heading'><b>DepEd Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>

@@ -67,7 +67,7 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-teacher')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
@@ -77,8 +77,15 @@
 
             <main class="content px-3 py-2">
                 <div class="container-fluid" id="view-student">
-					<div>
-                        <h3 class="pt-3">{{$section->secname}}</h3>
+                    <div class='row d-flex justify-content-between align-items-center'>
+                        <div class="col-sm-auto">
+                            <h1 class="pt-3">{{$section->secname}}</h1>
+                        </div>
+                        <div class="col-sm-auto">
+                            <a href="{{route('view-section')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left"></i> Back
+                            </a>
+                        </div>
                     </div>
                     <hr>
 					<!-- Search Bar -->
@@ -122,7 +129,7 @@
                             </tbody>
                         </table>
                         <center>
-                        <button type="submit" class="btn btn-danger mb-3">
+                        <button id="remove-student-btn" type="submit" class="btn btn-danger mb-3">
                             <i class="fa-solid fa-trash"></i> Remove Student/s
                         </button>
                         </center>
@@ -157,7 +164,7 @@
                             </thead>
                             <tbody>
                                 @foreach($students as $student)
-                                    @if($student->section !== $section->id)
+                                    @if(empty($student->section))
                                         <tr>
                                             <td>{{$student->lrn}}</td>
                                             <td>{{$student->fname}}</td>
@@ -177,7 +184,7 @@
                             </tbody>
                         </table>
                         <center>
-                        <button type="submit" class="btn btn-primary mb-3">
+                        <button id="assign-student-btn" type="submit" class="btn btn-primary mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512">
                                 <style>svg{fill:#ffffff}</style>
                                 <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
@@ -232,6 +239,38 @@
 
 <!-- Search and Sort Script -->
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Select the buttons
+    const assignButton = document.getElementById('assign-student-btn');
+    const removeButton = document.getElementById('remove-student-btn');
+
+    // Select all checkboxes within both tables
+    const assignCheckboxes = document.querySelectorAll('#student-table .btn-check');
+    const removeCheckboxes = document.querySelectorAll('#section-student-table .btn-check');
+
+    // Function to toggle button state
+    function toggleButtonState() {
+        // Check if at least one checkbox is checked in each table
+        const isAnyAssignChecked = Array.from(assignCheckboxes).some(checkbox => checkbox.checked);
+        const isAnyRemoveChecked = Array.from(removeCheckboxes).some(checkbox => checkbox.checked);
+
+        // Enable or disable buttons based on checked status
+        assignButton.disabled = !isAnyAssignChecked;
+        removeButton.disabled = !isAnyRemoveChecked;
+    }
+
+    // Add event listeners to each checkbox to monitor changes
+    assignCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', toggleButtonState);
+    });
+
+    removeCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', toggleButtonState);
+    });
+
+    // Initial check on page load
+    toggleButtonState();
+});
 document.addEventListener('DOMContentLoaded', function () {
     // Search for students in the section table
     const searchBarSection = document.getElementById('search-bar-section');

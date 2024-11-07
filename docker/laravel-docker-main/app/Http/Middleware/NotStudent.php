@@ -22,7 +22,11 @@ class NotStudent
             }elseif (auth()->user()->role === 'teacher'){
                 // Redirect to teacher dashboard
                 return redirect()->route('dashboard-teacher');
-                }
+            }
+            elseif (auth()->user()->role === 'admin'){
+                // Redirect to admin dashboard
+                return redirect()->route('dashboard-admin');
+            }
         }else{
             return redirect()->route('login');
         }

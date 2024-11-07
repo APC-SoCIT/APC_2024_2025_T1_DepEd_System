@@ -22,10 +22,6 @@ class Section extends Model
         'grade',
         'school_year',
         'teacher_id',
-        'dnm',
-        'fairly',
-        'satisfactory',
-        'vsatisfactory',
-        'outstanding',
+        'status',
     ];
 }

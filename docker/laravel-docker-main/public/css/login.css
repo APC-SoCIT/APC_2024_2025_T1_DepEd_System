@@ -34,7 +34,20 @@ body {
     border: none;
     transition: transform 0.3s ease;
 }
-
+#centered-container-schools{
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 85%;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    transition: transform 0.3s ease;
+}
 #centered-container:hover {
     transform: translate(-50%, -50%) scale(1.02);
 }

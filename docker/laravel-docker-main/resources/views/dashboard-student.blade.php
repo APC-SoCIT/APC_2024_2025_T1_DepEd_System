@@ -18,15 +18,10 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#grades" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-solid fa-medal"></i>
+                        <a href="{{route('view-student-sections')}}" class="sidebar-link">
+                            <i class="fa-solid fa-medal pe-2"></i>
                             View Grades
                         </a>
-                        <ul id="grades" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="" class="sidebar-link">--</a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -43,16 +38,32 @@
                                 <h6 style="color:white!important;"><b>{{ ucfirst(auth()->user()->fname) }}</b></h6>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-3">
-                                <p><a href="" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></p>
+                                <p><a href="{{route('edit-student')}}" class="dropdown-item"><i class="fa-solid fa-pen-to-square"></i> Change Password</a></p>
                                 <p><a href="{{route('logout')}}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+            <style>
+                .text-justify {
+                text-align: justify;
+            }
+            </style>
             <main class="content px-3 py-2">
-                <div class="container-fluid">
-                    Dashboard
+                <div class="container-fluid" id="dashboard">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-sm-4">
+                            <img class="mt-2 img-fluid rounded shadow" style="max-height: 535px; object-fit: cover;" src="https://www.teacherph.com/wp-content/uploads/2019/02/DepEd-Public-Schools-of-the-Future.jpg" alt="DepEd Public Schools">
+                        </div>
+                        <div class="col-sm-8 mt-2 mr-5">
+                            <h3 class="mb-2">Greetings, {{ ucfirst(auth()->user()->fname) }} {{ ucfirst(auth()->user()->lname) }}!</h3>
+                            <hr class="my-2">
+                            <p class="lead text-justify">
+                                The DepEd Student Portal is a simple and user-friendly web application designed to help students access and review their academic grades. You can easily view your grade history, organized by quarters and subjects in a clean and accessible interface. The application focuses on providing a straightforward experience, allowing you to quickly check and reflect on your academic performance at any time
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </main>
             <footer class="footer">
@@ -80,4 +91,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/dashboard.js')}}"></script>
 </body>
+<?php
+ if(isset($_GET['accountUpdated'])){
+     echo '<script>window.onload = function() { accountUpdated(); }</script>';
+ }
+?>
 @endsection

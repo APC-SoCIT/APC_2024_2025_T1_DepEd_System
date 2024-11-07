@@ -43,16 +43,42 @@ function section_updated(){
         icon: "success",
         title: "Section Updated!",
       });
-}function section_created(){
+}
+function section_created(){
     Swal.fire({
         icon: "success",
         title: "Section Created!",
+      });
+}
+function section_archived(){
+    Swal.fire({
+        icon: "success",
+        title: "Section Archived!",
       });
 }
 function section_deleted(){
     Swal.fire({
         icon: "success",
         title: "Section Deleted",
+      });
+}
+function grades_updated(){
+    Swal.fire({
+        icon: "success",
+        title: "Grades Updated!",
+      });
+}
+function accountUpdateFailed(){
+    Swal.fire({
+        icon: "error",
+        title: "Account Update Failed!",
+        text: "Please try again.",
+      });
+}
+function accountUpdated(){
+    Swal.fire({
+        icon: "success",
+        title: "Account Updated!",
       });
 }
 const sidebarToggle = document.querySelector("#sidebar-toggle");

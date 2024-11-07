@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\School;
 
 class loginController extends Controller
 {
@@ -25,7 +26,11 @@ class loginController extends Controller
         return view('login?error');
     }
     function register(){
-        return view('register');
+        $schools = School::get();
+        return view('register', ['schools' => $schools]);
+    }
+    function adminLogin(){
+        return view('admin-login');
     }
     function registerError(){
         return view('register?error');
@@ -80,6 +85,27 @@ class loginController extends Controller
             return redirect()->route('dashboard-teacher');
         }else{
             return redirect()->route('login-teacher', http_build_query(array_merge(\Request::query(), ['error' => true])));
+        }
+    }
+    function adminLoginPost(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Check if the logged-in user has the role of 'teacher'
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('dashboard-admin');
+            } else {
+                Auth::logout(); // Log out the user if the role doesn't match
+                return redirect()->route('admin-login', http_build_query(array_merge($request->query(), ['error' => true])));
+            }
+        } else {
+            return redirect()->route('admin-login', http_build_query(array_merge($request->query(), ['error' => true])));
         }
     }
     function loginStudentPost(Request $request){

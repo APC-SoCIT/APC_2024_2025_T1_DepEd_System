@@ -11,6 +11,24 @@ function registered(){
         title: "Registered Successfully!",
       });
 }
+function schoolAdded(){
+  Swal.fire({
+      icon: "success",
+      title: "School Added!",
+    });
+}
+function schoolUpdated(){
+  Swal.fire({
+      icon: "success",
+      title: "School Updated!",
+    });
+}
+function schoolDeleted(){
+  Swal.fire({
+      icon: "success",
+      title: "School Deleted!",
+    });
+}
 function register_error(){
     Swal.fire({
         icon: "error",

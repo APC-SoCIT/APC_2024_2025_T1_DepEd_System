@@ -20,8 +20,12 @@ class User
             // Check if the authenticated user has the role of 'teacher'
             if (auth()->user()->role === 'teacher') {
                 return redirect()->route('dashboard-teacher');
-            } elseif (auth()->user()->role === 'student') {
+            } 
+            elseif (auth()->user()->role === 'student') {
                 return redirect()->route('dashboard-student');
+            }
+            elseif (auth()->user()->role === 'admin') {
+                return redirect()->route('dashboard-admin');
             }
         }
         

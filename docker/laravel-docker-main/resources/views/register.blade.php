@@ -35,11 +35,9 @@
                 <label class="form-label" for="sid">School Name</label>
                 <select class="form-control center-placeholder" id="sid" name="sid" required>
                     <option value="" disabled selected>--</option>
-                    <option value="1">Guadalupe Viejo Elementary School</option>
-                    <option value="2">Makati Elementary School</option>
-                    <option value="3">Heneral Pio Del Pilar Elementary School</option>
-                    <option value="4">La Paz Elementary School</option>
-                    <!-- Add more options as needed -->
+                    @foreach($schools as $school)
+                        <option value="{{ $school->id }}">{{ $school->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="row">
