@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\{loginController,dashboardController,gradeAnalyzer};
+use Illuminate\Support\Facades\URL;
 $url = config('app.url');
 URL::forceRootUrl($url);
 Route::get('/', [loginController::class, 'login'])->name('default-login')->middleware('user');
