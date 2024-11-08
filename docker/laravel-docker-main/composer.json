@@ -77,5 +77,9 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "platform-check": false
+    "config": {
+    "platform": {
+        "php": "8.0.30"
+        }
+    }
 }
