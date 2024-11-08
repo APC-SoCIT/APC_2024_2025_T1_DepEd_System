@@ -8,7 +8,7 @@
                 <div class="sidebar-logo">
                     <center>
                         <a href="{{route('dashboard-teacher')}}" class="no-effects">
-                            <img id="logo" src="{{ asset('DepEd_logo.ico') }}">
+                            <img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}">
                         </a>
                         <p><a href="{{route('dashboard-teacher')}}">DepEd Teacher Portal</a></p>
                     </center>
@@ -161,9 +161,9 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('js/dashboard.js')}}"></script>
-<script src="{{ asset('js/login.js')}}"></script>
-<script src="{{ asset('js/section.js')}}"></script>
+<script src="{{ secure_asset('js/dashboard.js')}}"></script>
+<script src="{{ secure_asset('js/login.js')}}"></script>
+<script src="{{ secure_asset('js/section.js')}}"></script>
 
 <!-- Search and Sort Script -->
 <script>

@@ -1,14 +1,14 @@
 @extends('layouts.dashboard-layout')
 
 @section('content')
-<link href="{{asset('css/grades.css')}}" rel="stylesheet">
+<link href="{{secure_asset('css/grades.css')}}" rel="stylesheet">
 <body>
     <div class="wrapper">
     <aside id="sidebar" class="js-sidebar">
             <!-- Content For Sidebar -->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <center><a href="{{route('dashboard-student')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+                    <center><a href="{{route('dashboard-student')}}" class="no-effects"><img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}"></a>
                     <p><a href="#">DepEd Student Portal</a></p></center>
                 </div>
                 <ul class="sidebar-nav">
@@ -398,8 +398,8 @@
 </body>
 @endsection
 @push('script')
-<script src="{{ asset('js/dashboard.js')}}"></script>
-<script src="{{ asset('js/login.js')}}"></script>
+<script src="{{ secure_asset('js/dashboard.js')}}"></script>
+<script src="{{ secure_asset('js/login.js')}}"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const fileInput = document.getElementById('formFileSm');

@@ -7,7 +7,7 @@
             <!-- Content For Sidebar -->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <center><a href="{{route('dashboard-teacher')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+                    <center><a href="{{route('dashboard-teacher')}}" class="no-effects"><img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}"></a>
                     <p><a href="{{route('dashboard-teacher')}}">DepEd Teacher Portal</a></p></center>
                 </div>
                 <ul class="sidebar-nav">
@@ -176,7 +176,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/dashboard.js')}}"></script>
+    <script src="{{ secure_asset('js/dashboard.js')}}"></script>
 </body>
 <?php
  if(isset($_GET['accountUpdateFailed'])){

@@ -1,7 +1,7 @@
 @extends('layouts.master-layout')
 @push('css')
-    <link href="{{asset('css/admin.css')}}" rel="stylesheet">
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/admin.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/dashboard.css')}}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
 @endpush
 
@@ -143,6 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 @push('script')
-<script src="{{ asset('js/login.js')}}"></script>
+<script src="{{ secure_asset('js/login.js')}}"></script>
 @endpush
 

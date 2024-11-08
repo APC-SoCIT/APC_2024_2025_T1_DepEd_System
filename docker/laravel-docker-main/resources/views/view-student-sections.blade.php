@@ -7,7 +7,7 @@
             <!-- Content For Sidebar -->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <center><a href="{{route('dashboard-student')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+                    <center><a href="{{route('dashboard-student')}}" class="no-effects"><img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}"></a>
                     <p><a href="#">DepEd Student Portal</a></p></center>
                 </div>
                 <ul class="sidebar-nav">
@@ -120,8 +120,8 @@ if(isset($_GET['created'])){
 ?>
 @endsection
 @push('script')
-<script src="{{ asset('js/dashboard.js')}}"></script>
-<script src="{{ asset('js/login.js')}}"></script>
+<script src="{{ secure_asset('js/dashboard.js')}}"></script>
+<script src="{{ secure_asset('js/login.js')}}"></script>
 <script>
 function filterSections(searchBarId, sectionContainerId) {
     document.getElementById(searchBarId).addEventListener('input', function() {

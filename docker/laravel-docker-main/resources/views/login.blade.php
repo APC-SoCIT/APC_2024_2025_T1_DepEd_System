@@ -11,7 +11,7 @@
 
 <div id="centered-container">
     <center>
-        <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ asset('DepEd_logo.ico') }}"></a>
+        <a href="{{route('login')}}" class="no-effects"><img id="logo" src="{{ secure_asset('DepEd_logo.ico') }}"></a>
         <p id='heading'><b>DepEd Portal</b></p>
         <p id='subheading'>Department of Education Record System</p>
         <div class='container'>
@@ -38,6 +38,6 @@
 </body>
 @endsection
 @push('script')
-    <script src="{{ asset('js/login.js')}}"></script>
+    <script src="{{ secure_asset('js/login.js')}}"></script>
 @endpush
 
