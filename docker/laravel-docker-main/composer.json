@@ -76,10 +76,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "config": {
-    "platform": {
-        "php": "8.0.30"
-        }
-    }
+    "prefer-stable": true
 }
