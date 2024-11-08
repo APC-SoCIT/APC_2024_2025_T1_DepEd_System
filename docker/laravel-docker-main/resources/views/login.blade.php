@@ -1,6 +1,6 @@
 @extends('layouts.master-layout')
 @push('css')
-    <link href="{{asset('css/login.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/login.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
